@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clinical Equivalence of Target Contours — Delphi</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { navy: '#1a3a5c', teal: '#2c6e9f', light: '#f0f6fa' }
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f8fafc; color: #0f172a; }
+    .scale-btn { transition: border-color .12s, background-color .12s; }
+    @media print {
+      header, .no-print { display: none !important; }
+      body { background: #fff; }
+      main { padding: 0 !important; max-width: none !important; }
+      .print-card { border: none !important; box-shadow: none !important; padding: 0 !important; }
+      .print-item { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <header class="bg-brand-navy text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <div class="min-w-0">
+        <h1 class="font-bold text-base sm:text-lg leading-tight truncate">Clinical equivalence of target contours</h1>
+        <p class="text-xs text-sky-200">Delphi Round <span class="js-round">1</span></p>
+      </div>
+      <span id="save-indicator" class="hidden text-[11px] text-sky-200 shrink-0" aria-live="polite"></span>
+    </div>
+  </header>
+
+  <main class="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 py-8">
+
+    <div id="loading-state" class="bg-white rounded-2xl border border-slate-200 p-10 text-center">
+      <div class="inline-block w-8 h-8 border-4 border-brand-teal border-t-transparent rounded-full animate-spin mb-3"></div>
+      <p class="text-sm text-slate-600">Loading the survey…</p>
+    </div>
+
+    <div id="error-state" class="hidden bg-white rounded-2xl border border-red-200 p-6">
+      <h2 class="font-bold text-slate-900">The survey could not be loaded</h2>
+      <p id="error-message" class="text-sm text-slate-600 mt-1"></p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- LANDING PAGE                                                  -->
+    <!-- ============================================================ -->
+    <section id="stage-welcome" class="hidden space-y-6">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
+        <p class="text-xs font-semibold uppercase tracking-wider text-brand-teal">Delphi Round <span class="js-round">1</span></p>
+        <h2 class="text-2xl sm:text-3xl font-bold text-brand-navy mt-1">Clinical equivalence of target contours</h2>
+        <p class="text-sm text-slate-500 mt-2"><span id="count-statements">–</span> statements and <span id="count-questions">–</span> short questions · Allow about 20 minutes</p>
+
+        <h3 class="text-sm font-bold text-slate-900 mt-6">About this survey</h3>
+        <div class="text-sm text-slate-700 leading-relaxed space-y-3 mt-2">
+          <p>We are investigating how to distinguish acceptable variation in target contours from differences that require correction. The proposed evaluation bandwidth represents variation using inner and outer contours. This survey asks what that range should mean, how it could be constructed, and what evidence would support its use.</p>
+          <p>The statements are proposals to test, not established recommendations. Agreement and disagreement are equally useful. The focus is target volumes; organs at risk are considered through the effects of target contour changes on toxicity.</p>
+          <p>There are two planned rounds. Round 2 will provide anonymised group results for consideration as a group. You will then rate the statements again. Differences of opinion remaining after Round 2 will be reported.</p>
+        </div>
+
+        <h3 class="text-sm font-bold text-slate-900 mt-6">How to respond</h3>
+        <ol class="text-sm text-slate-700 leading-relaxed list-decimal pl-5 space-y-1.5 mt-2">
+          <li>Statements are shown one at a time, section by section.</li>
+          <li>Rate each statement independently, as written. If it depends on a particular site, target type or clinical setting, explain that in the comment box.</li>
+          <li>Choose <strong>U</strong> when you cannot judge a statement.</li>
+          <li>Comments are optional and welcome: caveats, conditions, or other perspectives to consider.</li>
+          <li>You can review and change any answer before submitting. Your answers are kept in this browser as you go, so you can close the page and return on the same device and browser.</li>
+        </ol>
+
+        <h3 class="text-sm font-bold text-slate-900 mt-6">Rating scale</h3>
+        <div class="mt-2 overflow-hidden rounded-xl border border-slate-200">
+          <table class="w-full text-sm">
+            <tbody id="scale-table" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+        <p class="text-xs text-slate-500 mt-2">A neutral view (3) and inability to judge (U) will be analysed separately.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
+        <h3 class="text-lg font-bold text-brand-navy">About you</h3>
+        <p class="text-xs text-slate-500 mt-1">Used to check the balance of the panel and to link your Round 1 and Round 2 responses. Other panel members will not see your identity.</p>
+
+        <details class="mt-4 bg-slate-50 rounded-xl border border-slate-200">
+          <summary class="px-4 py-3 text-sm font-semibold text-slate-700 cursor-pointer select-none">Privacy notice — how your data is used</summary>
+          <div id="privacy-notice" class="px-4 pb-4 pt-1 text-xs text-slate-600 leading-relaxed space-y-2 border-t border-slate-200">
+            <p>[Replace this paragraph with your privacy notice: what is collected (name, email, profession, experience, country, ratings and comments), why, who can see it, how long it is kept, and who to contact to withdraw.]</p>
+          </div>
+        </details>
+
+        <form id="start-form" class="mt-5 space-y-4" novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="block">
+              <span class="block text-sm font-medium text-slate-700 mb-1">Full name <span class="text-red-500">*</span></span>
+              <input id="input-name" type="text" autocomplete="name" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal" />
+            </label>
+            <label class="block">
+              <span class="block text-sm font-medium text-slate-700 mb-1">Email address <span class="text-red-500">*</span></span>
+              <input id="input-email" type="email" autocomplete="email" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal" />
+              <span class="block text-[11px] text-slate-400 mt-1">Use the same address in Round 2.</span>
+            </label>
+            <label class="block">
+              <span class="block text-sm font-medium text-slate-700 mb-1">Profession <span class="text-red-500">*</span></span>
+              <select id="input-profession" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal">
+                <option value="">Select…</option>
+                <option>Radiation oncologist</option>
+                <option>Medical physicist</option>
+                <option>Radiation therapist</option>
+                <option>Dosimetrist</option>
+                <option>Researcher or developer</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <label id="profession-other-wrap" class="hidden">
+              <span class="block text-sm font-medium text-slate-700 mb-1">Please specify <span class="text-red-500">*</span></span>
+              <input id="input-profession-other" type="text" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal" />
+            </label>
+            <label class="block">
+              <span class="block text-sm font-medium text-slate-700 mb-1">Years in this profession <span class="text-red-500">*</span></span>
+              <select id="input-years" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal">
+                <option value="">Select…</option>
+                <option>Less than 5</option>
+                <option>5 to 9</option>
+                <option>10 to 19</option>
+                <option>20 or more</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="block text-sm font-medium text-slate-700 mb-1">Country of practice <span class="text-red-500">*</span></span>
+              <input id="input-country" type="text" autocomplete="country-name" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal" />
+            </label>
+          </div>
+
+          <label class="flex items-start gap-3 pt-1 cursor-pointer">
+            <input id="input-consent" type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-300" />
+            <span class="text-sm text-slate-700">I have read the privacy notice and agree to take part.</span>
+          </label>
+
+          <div id="form-error" class="hidden p-3 rounded-xl bg-red-50 border border-red-200 text-xs font-medium text-red-700" role="alert"></div>
+
+          <button type="submit" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-brand-navy hover:bg-brand-teal text-white font-semibold text-sm shadow-sm transition">Begin →</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ONE STATEMENT AT A TIME                                       -->
+    <!-- ============================================================ -->
+    <section id="stage-survey" class="hidden space-y-5">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm px-5 py-4">
+        <div class="flex items-center justify-between text-xs font-semibold text-slate-500">
+          <span id="progress-text"></span>
+          <button id="btn-to-review" type="button" class="text-brand-teal hover:underline">Review all answers</button>
+        </div>
+        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden mt-2">
+          <div id="progress-bar" class="bg-brand-teal h-full rounded-full transition-all" style="width:0%"></div>
+        </div>
+        <nav id="section-chips" class="flex flex-wrap gap-1.5 mt-3" aria-label="Sections"></nav>
+      </div>
+
+      <div id="item-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8"></div>
+
+      <div id="item-warning" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-xs font-medium text-amber-900" role="alert"></div>
+
+      <div class="flex items-center justify-between">
+        <button id="btn-prev" type="button" class="px-5 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold disabled:opacity-40 disabled:pointer-events-none">← Previous</button>
+        <button id="btn-next" type="button" class="px-6 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-teal text-white text-sm font-semibold shadow-sm">Next →</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- REVIEW AND SUBMIT                                             -->
+    <!-- ============================================================ -->
+    <section id="stage-review" class="hidden space-y-5">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
+        <h2 class="text-xl font-bold text-brand-navy">Review your answers</h2>
+        <p class="text-sm text-slate-600 mt-1">Select <strong>Edit</strong> to change any answer. Nothing is final until you submit.</p>
+        <div id="review-missing" class="hidden mt-4 p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-xs font-medium text-amber-900"></div>
+        <div id="review-list" class="mt-5 space-y-6"></div>
+      </div>
+      <div id="submit-error" class="hidden p-3.5 rounded-xl bg-red-50 border border-red-200 text-sm text-red-800" role="alert"></div>
+      <div class="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3">
+        <button id="btn-review-back" type="button" class="px-5 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold">← Back to the statements</button>
+        <button id="btn-submit" type="button" class="px-7 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-sm disabled:opacity-50">Submit my responses</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- DONE                                                          -->
+    <!-- ============================================================ -->
+    <section id="stage-done" class="hidden space-y-5">
+      <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 sm:p-8 no-print">
+        <h2 class="text-xl font-bold text-emerald-900">Thank you — your Round <span class="js-round">1</span> responses have been submitted</h2>
+        <p class="text-sm text-emerald-900/80 mt-1">Keep a copy of your answers to compare with the group results in the next round.</p>
+        <div class="flex flex-wrap gap-3 mt-4">
+          <button id="btn-print" type="button" class="px-5 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-teal text-white text-sm font-semibold">Print or save as PDF</button>
+          <button id="btn-clear" type="button" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-700 text-xs font-semibold">Remove my copy from this browser</button>
+        </div>
+        <p id="clear-confirm" class="hidden text-xs text-slate-700 mt-3">This only removes the copy kept in this browser; your submitted responses are not affected.
+          <button id="btn-clear-yes" type="button" class="font-semibold underline ml-1">Remove it</button>
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 print-card">
+        <h3 class="text-lg font-bold text-brand-navy">Your responses</h3>
+        <p id="done-meta" class="text-xs text-slate-500 mt-1"></p>
+        <div id="done-list" class="mt-5 space-y-6"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js?v=2026-10-29"></script>
+</body>
+</html>
