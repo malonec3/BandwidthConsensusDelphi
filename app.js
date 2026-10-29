@@ -15,8 +15,8 @@ const CONFIG = {
   CSV_PATH: './delphi_statements.csv',
 
   // From Supabase > Project Settings > API (the publishable / anon key).
-  SUPABASE_URL: 'YOUR_SUPABASE_PROJECT_URL',
-  SUPABASE_ANON_KEY: 'YOUR_SUPABASE_PUBLISHABLE_KEY',
+  SUPABASE_URL: 'https://kxkzbydqtdzvkkzlvylf.supabase.co',
+  SUPABASE_ANON_KEY: 'sb_publishable_HW2LexdXVvl7Kef9fTjvHw_y1gM6CfT',
   SUPABASE_TABLE: 'delphi_responses',
 
   // Require a rating (1-5 or U) for every rated statement before moving on.
