@@ -1,7 +1,7 @@
 id,section,section_title,section_intro,type,text,options,consensus,feedback
 A1,A,Current practice,,rating,"Adjustments to clinical target contours are sometimes determined by personal preferences, rather than expected clinical benefit",,0,
 A2,A,Current practice,,rating,Sufficient criteria are available for deciding when a target contour needs no further editing.,,0,
-A3,A,Current practice,,rating,Current manual evaluation of clinical targets is sufficient to ascertain which auto-contours need editing.,,0,
+A3,A,Current practice,,rating,Current approaches for manual evaluation of clinical targets is sufficient to ascertain which auto-contours need editing.,,0,
 B1,B,Meaning and limits of clinical equivalence,Assuming we cannot directly measure outcomes….,rating,"Two target contours should be considered clinically equivalent when their expected outcomes differ by less than a prespecified, clinically justified tolerance for each relevant tumour control and toxicity endpoint, for the same patient and treatment context.",,1,
 B2,B,Meaning and limits of clinical equivalence,Assuming we cannot directly measure outcomes….,rating,Expert agreement that two target contours are clinically acceptable is sufficient to classify them as clinically equivalent.,,1,
 B3,B,Meaning and limits of clinical equivalence,Assuming we cannot directly measure outcomes….,rating,"A target contour that does not conform to clinical guidelines (e.g. is not technically protocol compliant) should be corrected, even if its predicted outcome difference is within the agreed tolerance.",,1,
