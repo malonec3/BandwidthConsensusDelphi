@@ -11,8 +11,15 @@ const CONFIG = {
   ROUND: 1,
   // Change whenever you edit the statements CSV, so each response records
   // which wording was answered.
-  INSTRUMENT_VERSION: '2026-10-29',
+  INSTRUMENT_VERSION: '2026-11-02',
   CSV_PATH: './delphi_statements.csv',
+
+  // Round 2 onwards: the previous round's group results, written by
+  // `python delphi_report.py <export.csv> --feedback-json`. 'auto' looks for
+  // round<ROUND-1>_feedback.json next to index.html; '' turns it off.
+  FEEDBACK_PATH: 'auto',
+  // Optional link to the full previous-round report, shown on the welcome page.
+  REPORT_URL: '',
 
   // From Supabase > Project Settings > API (the publishable / anon key).
   SUPABASE_URL: 'https://kxkzbydqtdzvkkzlvylf.supabase.co',
@@ -23,7 +30,8 @@ const CONFIG = {
   REQUIRE_RATING: true,
   COMMENT_MAX_LENGTH: 3000
 };
-const STORAGE_KEY = `delphi_contours_round${CONFIG.ROUND}_v1`;
+// Keep drafts separate when wording or question IDs change within a round.
+const STORAGE_KEY = `delphi_contours_round${CONFIG.ROUND}_${CONFIG.INSTRUMENT_VERSION}`;
 
 const SCALE = [
   { value: '1', label: 'Strongly disagree' },
@@ -37,8 +45,10 @@ const UNABLE = { value: 'U', label: 'Unable to judge because of insufficient inf
 // ============================================================================
 // 2. STATE
 // ============================================================================
-let items = []; // [{ id, order, section, sectionTitle, sectionIntro, type, text, options, consensus, feedback }]
+let items = []; // [{ id, order, section, sectionTitle, sectionIntro, type, text, options, consensus, feedback, revisedFrom }]
 let sections = []; // [{ id, title, intro, items: [] }]
+let previous = null; // previous round's group results (round<N>_feedback.json), or null
+let previousError = '';
 let supabaseClient = null;
 let progressInFlight = false;
 let saveTimer = null;
@@ -113,6 +123,12 @@ function flashSaved() {
 // ============================================================================
 document.addEventListener('DOMContentLoaded', async () => {
   document.querySelectorAll('.js-round').forEach((el) => (el.textContent = CONFIG.ROUND));
+  document.querySelectorAll('.js-prev-round').forEach((el) => (el.textContent = CONFIG.ROUND - 1));
+  // Text marked data-show-round="1" appears in Round 1 only; "2" appears from Round 2 on.
+  document.querySelectorAll('[data-show-round]').forEach((el) => {
+    const forRound1 = el.dataset.showRound === '1';
+    el.classList.toggle('hidden', forRound1 ? CONFIG.ROUND !== 1 : CONFIG.ROUND < 2);
+  });
   initSupabase();
   bindEvents();
   try {
@@ -123,10 +139,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     showError(`${err.message}. If you opened index.html directly from your computer, use a web server or GitHub Pages instead.`);
     return;
   }
+  await loadPreviousRound();
   document.getElementById('loading-state').classList.add('hidden');
 
   const saved = loadState();
   if (saved) state = saved;
+  else prefillFromPreviousRound();
   if (state.idx >= items.length) state.idx = 0;
   renderScaleTable();
   renderCounts();
@@ -160,7 +178,9 @@ function parseItems(csvText) {
       text: (r.text || '').trim(),
       options: (r.options || '').split('|').map((s) => s.trim()).filter(Boolean),
       consensus: ['1', 'true', 'yes', 'y'].includes(String(r.consensus || '').trim().toLowerCase()),
-      feedback: (r.feedback || '').trim()
+      feedback: (r.feedback || '').trim(),
+      // For a reworded statement: the id of the original, whose results are shown
+      revisedFrom: (r.revised_from || '').trim()
     }));
   if (items.length === 0) throw new Error('The statements file has no rows');
 
@@ -175,6 +195,40 @@ function parseItems(csvText) {
   });
 }
 
+async function loadPreviousRound() {
+  if (CONFIG.ROUND < 2 || !CONFIG.FEEDBACK_PATH) return;
+  const path = CONFIG.FEEDBACK_PATH === 'auto' ? `./round${CONFIG.ROUND - 1}_feedback.json` : CONFIG.FEEDBACK_PATH;
+  try {
+    const res = await fetch(path, { cache: 'no-cache' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!data || typeof data.items !== 'object') throw new Error('unexpected format');
+    previous = data;
+  } catch (err) {
+    previousError = `The Round ${CONFIG.ROUND - 1} group results could not be loaded (${path}: ${err.message}).`;
+    console.warn(previousError);
+  }
+}
+
+// In a new round, copy the participant's details from the previous round if it
+// was completed in this browser (consent must be given again).
+function prefillFromPreviousRound() {
+  if (CONFIG.ROUND < 2) return;
+  try {
+    const prefix = `delphi_contours_round${CONFIG.ROUND - 1}_`;
+    const keys = Object.keys(localStorage).filter((k) => k.startsWith(prefix)).sort();
+    for (let i = keys.length - 1; i >= 0; i--) {
+      const old = JSON.parse(localStorage.getItem(keys[i]) || 'null');
+      if (old && old.participant && old.participant.email) {
+        state.participant = { ...state.participant, ...old.participant, consent: false };
+        return;
+      }
+    }
+  } catch (e) {
+    /* nothing to prefill */
+  }
+}
+
 function showError(msg) {
   document.getElementById('loading-state').classList.add('hidden');
   document.getElementById('error-state').classList.remove('hidden');
@@ -186,6 +240,10 @@ function showError(msg) {
 // ============================================================================
 const resp = (id) => state.responses[id] || {};
 const sectionOf = (item) => sections.find((s) => s.id === item.section);
+
+function isOtherChoice(value) {
+  return String(value ?? '').trim().toLowerCase() === 'other';
+}
 
 function isAnswered(item) {
   const r = resp(item.id);
@@ -225,10 +283,156 @@ function answerSummary(item) {
   if (item.type === 'choice') {
     if (!r.choice) return '';
     if (r.choice === 'U') return 'Unable to answer';
-    if (r.choice === 'Other') return `Other: ${(r.other || '').trim() || '(not specified)'}`;
+    if (isOtherChoice(r.choice)) return `Other: ${(r.other || '').trim() || '(not specified)'}`;
     return r.choice;
   }
   return '';
+}
+
+// ============================================================================
+// 4b. PREVIOUS-ROUND GROUP RESULTS (Round 2 onwards)
+// ============================================================================
+const LIKERT_COLOURS = { 1: '#b93a39', 2: '#ee9d97', 3: '#cfcdc6', 4: '#8db6e8', 5: '#2a6fc4' };
+const SHORT_LABELS = { 1: 'Strongly disagree', 2: 'Disagree', 3: 'Neutral', 4: 'Agree', 5: 'Strongly agree', U: 'Unable to judge' };
+const U_PATTERN = 'repeating-linear-gradient(135deg,#c3c2b7 0 1.5px,#f0efec 1.5px 6px)';
+
+const previousFor = (item) => (previous && previous.items ? previous.items[item.revisedFrom || item.id] : null);
+const pctText = (x) => (x === null || x === undefined ? '–' : `${Math.round(x * 100)}%`);
+const numText = (x) => (x === null || x === undefined ? '–' : Number.isInteger(x) ? String(x) : String(Math.round(x * 10) / 10));
+
+function resultSentence(fb) {
+  const d = fb.denominator;
+  let detail = '';
+  if (fb.result_key === 'agree') detail = `${pctText(fb.pct_agree)} rated 4–5 (${fb.agree_n} of ${d})`;
+  else if (fb.result_key === 'disagree') detail = `${pctText(fb.pct_disagree)} rated 1–2 (${fb.disagree_n} of ${d})`;
+  else if (fb.result_key === 'none') detail = `${pctText(fb.pct_agree)} agree, ${pctText(fb.pct_disagree)} disagree (n = ${d})`;
+  return `<span class="font-bold">${escapeHTML(fb.result)}</span>${detail ? ` · ${escapeHTML(detail)}` : ''}${
+    fb.borderline ? ' <span class="text-slate-500 italic">· one vote from changing</span>' : ''
+  }`;
+}
+
+function ratingChartHTML(fb) {
+  const total = Math.max(1, previous.respondents || 0, ...['1', '2', '3', '4', '5', 'U'].map((k) => fb.counts[k] || 0));
+  const keys = ['1', '2', '3', '4', '5', 'U'];
+  const aria = keys.map((k) => `${k} ${SHORT_LABELS[k]}: ${fb.counts[k] || 0}`).join(', ');
+  const cols = keys
+    .map((k) => {
+      const n = fb.counts[k] || 0;
+      const h = n ? Math.max(3, Math.round((n / total) * 110)) : 0;
+      const bg = k === 'U' ? `background:${U_PATTERN};box-shadow:inset 0 0 0 1px #898781` : `background:${LIKERT_COLOURS[k]}`;
+      return `
+        <div class="flex-1 flex flex-col items-center ${k === 'U' ? 'ml-2 sm:ml-4 pl-2 sm:pl-4 border-l border-slate-200' : ''}">
+          <div class="h-[132px] w-full flex flex-col items-center justify-end">
+            <span class="text-xs font-semibold text-slate-800 mb-1">${n}</span>
+            <div class="w-full max-w-[46px] rounded-t-[4px]" style="height:${h}px;${bg}"></div>
+          </div>
+          <div class="w-full border-t border-slate-300 pt-1 text-center leading-tight">
+            <span class="block text-[11px] font-bold text-slate-700">${k}</span>
+            <span class="block text-[10px] text-slate-500">${escapeHTML(SHORT_LABELS[k])}</span>
+          </div>
+        </div>`;
+    })
+    .join('');
+  return `<div class="mt-3 flex items-stretch gap-1 sm:gap-2" role="img" aria-label="Round ${escapeHTML(previous.source_round)} ratings. ${escapeHTML(aria)}">${cols}</div>`;
+}
+
+function choiceChartHTML(fb) {
+  const entries = Object.entries(fb.counts || {}).filter(([k, v]) => v > 0 || (k !== 'Other' && k !== 'U'));
+  const top = Math.max(1, ...entries.map(([, v]) => v));
+  return `<div class="mt-3 space-y-1.5">${entries
+    .map(([k, v]) => `
+      <div class="flex items-center gap-2 text-xs">
+        <span class="w-40 sm:w-56 shrink-0 text-right text-slate-700">${escapeHTML(k === 'U' ? 'Unable to answer' : k)}</span>
+        <span class="h-3.5 rounded-r-[4px]" style="width:${Math.max(v ? 2 : 0, (v / top) * 60)}%;${k === 'U' ? `background:${U_PATTERN}` : 'background:#2a6fc4'}"></span>
+        <span class="font-semibold text-slate-800">${v}</span>
+      </div>`)
+    .join('')}</div>`;
+}
+
+function listDetailsHTML(title, entries) {
+  if (!entries.length) return '';
+  return `
+    <details class="mt-3 rounded-lg border border-slate-200 bg-white">
+      <summary class="px-3 py-2 text-sm font-semibold text-brand-navy cursor-pointer select-none">${escapeHTML(title)}</summary>
+      <ul class="px-3 pb-3 space-y-2 text-sm text-slate-700">${entries.map((e) => `<li class="whitespace-pre-line border-t border-slate-100 pt-2">${e}</li>`).join('')}</ul>
+    </details>`;
+}
+
+function feedbackPanelHTML(item) {
+  const fb = previousFor(item);
+  if (!fb) {
+    return item.feedback
+      ? `<div class="mt-4 text-sm bg-sky-50 border border-sky-200 rounded-xl px-4 py-3 text-brand-navy"><span class="font-bold block text-xs uppercase tracking-wider mb-1">Previous round — group result</span>${escapeHTML(item.feedback)}</div>`
+      : '';
+  }
+  const prev = escapeHTML(previous.source_round);
+  let inner = '';
+  if (item.revisedFrom) {
+    inner += `<p class="text-xs text-slate-600 bg-white border border-slate-200 rounded-lg px-3 py-2 mb-3">These are the Round ${prev} results for the original wording (${escapeHTML(item.revisedFrom)}): <span class="italic">“${escapeHTML(fb.text)}”</span></p>`;
+  }
+  if (fb.type === 'rating') {
+    inner += `
+      <p class="text-sm text-slate-900">${resultSentence(fb)}</p>
+      <p class="text-xs text-slate-500 mt-0.5">Neutral (3): ${pctText(fb.pct_neutral)} · Median ${numText(fb.median)} (IQR ${numText(fb.q1)}–${numText(fb.q3)}) · Unable to judge: ${fb.counts.U || 0}</p>
+      ${ratingChartHTML(fb)}`;
+  } else if (fb.type === 'choice') {
+    inner += choiceChartHTML(fb);
+  }
+  if (fb.summary) {
+    inner += `<p class="mt-4 text-sm text-slate-800 leading-relaxed"><span class="font-semibold">Summary of ${fb.type === 'open' ? 'responses' : 'comments'}.</span> ${escapeHTML(fb.summary)}</p>`;
+  }
+  if (fb.type === 'open') {
+    inner += listDetailsHTML(`Round ${previous.source_round} responses (${(fb.responses || []).length})`, (fb.responses || []).map((t) => escapeHTML(t)));
+  } else {
+    const comments = fb.comments || [];
+    const label = (c) => (c.rating ? `Rated ${c.rating}` : c.choice ? `Chose ${c.choice}` : '');
+    inner += listDetailsHTML(
+      `Comments from Round ${previous.source_round} (${comments.length})`,
+      comments.map((c) => `${label(c) ? `<span class="font-semibold text-slate-500">${escapeHTML(label(c))}:</span> ` : ''}${escapeHTML(c.text)}`)
+    );
+    if (!comments.length) inner += `<p class="mt-3 text-xs italic text-slate-500">No comments were received.</p>`;
+  }
+  return `
+    <section class="mt-5 rounded-xl border border-sky-200 bg-sky-50/60 px-4 py-4" aria-label="Round ${prev} group result">
+      <p class="text-xs font-bold uppercase tracking-wider text-brand-navy mb-2">Round ${prev} group result · ${escapeHTML(previous.respondents)} respondents</p>
+      ${inner}
+    </section>`;
+}
+
+function renderPreviousRound() {
+  const box = document.getElementById('previous-round');
+  if (!box) return;
+  if (CONFIG.ROUND < 2 || (!previous && !previousError)) { box.classList.add('hidden'); return; }
+  box.classList.remove('hidden');
+  if (!previous) {
+    box.innerHTML = `<p class="text-sm text-amber-900 bg-amber-50 border border-amber-300 rounded-xl px-4 py-3">${escapeHTML(previousError)} Please let the study team know.</p>`;
+    return;
+  }
+  const rated = Object.entries(previous.items).filter(([, v]) => v.type === 'rating');
+  const accepted = rated.filter(([id, v]) => ['agree', 'disagree'].includes(v.result_key) && !items.some((i) => i.id === id));
+  const nCons = rated.filter(([, v]) => ['agree', 'disagree'].includes(v.result_key)).length;
+  const prev = escapeHTML(previous.source_round);
+  const rows = accepted
+    .map(([id, v]) => `
+      <li class="py-2 border-t border-slate-100 flex gap-3">
+        <span class="shrink-0 w-10 font-bold text-brand-navy">${escapeHTML(id)}</span>
+        <span class="flex-1 text-slate-700">${escapeHTML(v.text)}</span>
+        <span class="shrink-0 w-28 text-right text-xs font-semibold ${v.result_key === 'agree' ? 'text-brand-teal' : 'text-red-700'}">${escapeHTML(v.result)}<span class="block font-normal text-slate-500">${pctText(v.result_key === 'agree' ? v.pct_agree : v.pct_disagree)}</span></span>
+      </li>`)
+    .join('');
+  box.innerHTML = `
+    <h3 class="text-lg font-bold text-brand-navy">Round ${prev} results</h3>
+    <p class="text-sm text-slate-700 mt-2 leading-relaxed">${escapeHTML(previous.respondents)} panel members responded to Round ${prev}. Consensus was reached on ${nCons} of ${rated.length} statements. ${escapeHTML(previous.rule || '')}</p>
+    <p class="text-sm text-slate-700 mt-2 leading-relaxed">In this round you will rate ${items.filter((i) => i.type === 'rating' && !i.revisedFrom).length} statements again${
+      items.some((i) => i.revisedFrom) ? ` and ${items.filter((i) => i.revisedFrom).length} revised ${items.filter((i) => i.revisedFrom).length === 1 ? 'statement' : 'statements'}` : ''
+    }, each shown with the Round ${prev} results and comments.${
+      accepted.length ? ` The ${accepted.length} statements below reached consensus and are not being rated again.` : ''
+    }${CONFIG.REPORT_URL ? ` <a class="font-semibold text-brand-teal underline" href="${escapeHTML(CONFIG.REPORT_URL)}" target="_blank" rel="noopener">Read the full Round ${prev} report</a>.` : ''}</p>
+    ${accepted.length ? `
+    <details class="mt-4 rounded-xl border border-slate-200">
+      <summary class="px-4 py-3 text-sm font-semibold text-slate-700 cursor-pointer select-none">Statements that reached consensus in Round ${prev} (${accepted.length})</summary>
+      <ul class="px-4 pb-3 text-sm">${rows}</ul>
+    </details>` : ''}`;
 }
 
 // ============================================================================
@@ -270,6 +474,7 @@ function renderWelcome() {
   document.getElementById('input-country').value = p.country;
   document.getElementById('input-consent').checked = p.consent;
   toggleProfessionOther();
+  renderPreviousRound();
 }
 
 function toggleProfessionOther() {
@@ -309,9 +514,12 @@ function renderItem() {
     ${sec.intro ? `<p class="mt-3 text-sm italic text-slate-600 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5">${escapeHTML(sec.intro)}</p>` : ''}
     <div class="mt-5 flex items-start gap-3">
       <span class="shrink-0 px-2 py-1 rounded-md bg-brand-light text-brand-navy text-xs font-bold">${escapeHTML(item.id)}</span>
-      <h2 class="text-lg sm:text-xl font-semibold text-slate-900 leading-snug">${escapeHTML(item.text)}</h2>
+      <div>
+        ${item.revisedFrom ? `<span class="inline-block mb-1.5 px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[11px] font-bold uppercase tracking-wider">Revised in Round ${CONFIG.ROUND}</span>` : ''}
+        <h2 class="text-lg sm:text-xl font-semibold text-slate-900 leading-snug">${escapeHTML(item.text)}</h2>
+      </div>
     </div>
-    ${item.feedback ? `<div class="mt-4 text-sm bg-sky-50 border border-sky-200 rounded-xl px-4 py-3 text-brand-navy"><span class="font-bold block text-xs uppercase tracking-wider mb-1">Previous round — group result</span>${escapeHTML(item.feedback)}</div>` : ''}
+    ${feedbackPanelHTML(item)}
   `;
 
   if (item.type === 'rating') {
@@ -333,15 +541,20 @@ function renderItem() {
         Unable to answer because of insufficient information or expertise
       </label>`;
   } else if (item.type === 'choice') {
-    const opts = item.options.map((o) => ({ value: o, label: o }));
-    opts.push({ value: 'U', label: 'Unable to answer' });
+    const opts = item.options.map((o) => ({
+      value: o,
+      label: o === 'U' ? 'Unable to answer' : o
+    }));
+    if (!opts.some((o) => o.value === 'U')) {
+      opts.push({ value: 'U', label: 'Unable to answer' });
+    }
     body += `
       <fieldset class="mt-6">
         <legend class="text-sm font-semibold text-slate-800 mb-2">Choose one</legend>
         <div class="space-y-2" role="radiogroup">
           ${opts.map((o) => choiceButton(o, r.choice === o.value)).join('')}
         </div>
-        <div id="other-wrap" class="${r.choice === 'Other' ? '' : 'hidden'} mt-3">
+        <div id="other-wrap" class="${isOtherChoice(r.choice) ? '' : 'hidden'} mt-3">
           <label class="block text-sm font-medium text-slate-700 mb-1" for="other-input">Your suggested name</label>
           <input id="other-input" type="text" maxlength="200" value="${escapeHTML(r.other || '')}" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal" />
         </div>
@@ -365,7 +578,7 @@ function renderItem() {
       updateResponse(item.id, { choice: btn.dataset.choice });
       saveState();
       refreshButtons(card, 'choice', btn.dataset.choice);
-      card.querySelector('#other-wrap').classList.toggle('hidden', btn.dataset.choice !== 'Other');
+      card.querySelector('#other-wrap').classList.toggle('hidden', !isOtherChoice(btn.dataset.choice));
       updateProgressOnly();
     })
   );
@@ -496,7 +709,7 @@ function responseListHTML(editable) {
             return `
           <div class="print-item px-4 py-3 ${missing && isRequired(it) ? 'bg-amber-50' : ''}">
             <div class="flex items-start justify-between gap-3">
-              <p class="text-sm text-slate-800"><span class="font-bold text-brand-navy mr-1">${escapeHTML(it.id)}</span>${escapeHTML(it.text)}</p>
+              <p class="text-sm text-slate-800"><span class="font-bold text-brand-navy mr-1">${escapeHTML(it.id)}</span>${it.revisedFrom ? '<span class="text-[10px] font-bold uppercase text-amber-800 mr-1">Revised</span>' : ''}${escapeHTML(it.text)}</p>
               ${editable ? `<button type="button" data-edit="${escapeHTML(it.id)}" class="no-print shrink-0 text-xs font-semibold text-brand-teal hover:underline">Edit</button>` : ''}
             </div>
             <p class="text-sm mt-1.5 ${missing ? 'text-amber-800 italic' : 'font-semibold text-slate-900'}">${missing ? (isRequired(it) ? 'Not yet rated' : 'No response') : escapeHTML(ans)}</p>
@@ -560,10 +773,11 @@ function buildRow(event) {
       section: it.section,
       type: it.type,
       consensus: it.consensus,
+      revised_from: it.revisedFrom || null,
       rating: it.type === 'rating' ? r.rating || null : null,
       text: it.type === 'open' ? (r.text || '').trim() || null : null,
       choice: it.type === 'choice' ? r.choice || null : null,
-      other: it.type === 'choice' && r.choice === 'Other' ? (r.other || '').trim() || null : null,
+      other: it.type === 'choice' && isOtherChoice(r.choice) ? (r.other || '').trim() || null : null,
       unable: it.type === 'open' ? Boolean(r.unable) : it.type === 'rating' ? r.rating === 'U' : r.choice === 'U',
       comment: (r.comment || '').trim() || null,
       first_answered_at: state.times[it.id]?.first || null,

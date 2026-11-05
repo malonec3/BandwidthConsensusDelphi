@@ -1,0 +1,1759 @@
+{
+ "source_round": 1,
+ "generated": "2026-11-05",
+ "respondents": 20,
+ "threshold": 0.75,
+ "rule": "Consensus means at least 75% rated the statement 4–5 (agree) or 1–2 (disagree). U responses are not counted. Neutral (3) ratings are counted.",
+ "items": {
+  "A1": {
+   "type": "rating",
+   "section": "A",
+   "text": "Adjustments to clinical target contours are sometimes determined by personal preferences, rather than expected clinical benefit",
+   "counts": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 9,
+    "5": 6,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 15,
+   "disagree_n": 2,
+   "pct_agree": 0.7894736842105263,
+   "pct_neutral": 0.10526315789473684,
+   "pct_disagree": 0.10526315789473684,
+   "median": 4,
+   "q1": 4.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "Most commenters accepted that preference plays a part but questioned the framing. Several said a clinician's preferences are shaped by clinical experience and intuition and are themselves aimed at clinical benefit, so the two are hard to separate; one described the process as inherently subjective, and one observed that their own contouring changes depending on which clinician will approve it. Another noted that clinicians must follow guidelines but also weigh patient-specific factors, imaging interpretation and unknown microscopic extent, which others may read as preference. On wording, one suggested “opinions” rather than “preferences”, and two felt “sometimes” makes the statement vague (one suggesting that personal preference always plays a role).",
+   "comments": [
+    {
+     "rating": "2",
+     "text": "ROs must adhere to guidelines. However, they may also consider patient-specific factors when making adjustments to target delineation, the significance of which may not always be fully appreciated by a medical physicist. Furthermore, ROs are accustomed to interpreting anatomy in a particular way, often in the axial plane. Also microscopic tumour extent is usually not known.\n\nThe use of \"sometimes\" in the statement is adding a grey zone, i.e. the statement is not black-white in itself."
+    },
+    {
+     "rating": "2",
+     "text": "Changed based on experience more than preference"
+    },
+    {
+     "rating": "4",
+     "text": "Clinical target contours would be adjusted with clinical benefit in mind but ultimately, this process is subjective and it would be personal preferences of the responsible clinician."
+    },
+    {
+     "rating": "4",
+     "text": "I think the personal preferences of the physician doing the contouring reflect and are shaped by intuition and experience that cannot be quantified. I think these preferences ARE geared towards expected clinical benefit, but they are not derived from outside instructions but rather by experience."
+    },
+    {
+     "rating": "4",
+     "text": "Agree but this said personal preference is based on clinical experience gained in treating certain tumour sites"
+    },
+    {
+     "rating": "4",
+     "text": "From contouring for differnet ROs I have seen that my practice chages depending on who will sign off the final volumes"
+    },
+    {
+     "rating": "5",
+     "text": "I'd use the term \"opinions\" over \"preferences\""
+    },
+    {
+     "rating": "5",
+     "text": "The word \"sometimes\" makes the statement somewhat weaker than intended. \nPerhaps: in making adjustments, personel pref. Always play a role or something"
+    }
+   ]
+  },
+  "A2": {
+   "type": "rating",
+   "section": "A",
+   "text": "Sufficient criteria are available for deciding when a target contour needs no further editing.",
+   "counts": {
+    "1": 3,
+    "2": 13,
+    "3": 3,
+    "4": 1,
+    "5": 0,
+    "U": 0
+   },
+   "n_rated": 20,
+   "denominator": 20,
+   "agree_n": 1,
+   "disagree_n": 16,
+   "pct_agree": 0.05,
+   "pct_neutral": 0.15,
+   "pct_disagree": 0.8,
+   "median": 2.0,
+   "q1": 2.0,
+   "q3": 2.0,
+   "result": "Consensus: disagree",
+   "result_key": "disagree",
+   "summary": "Comments noted that guidelines exist but are not designed for deciding when editing can stop, and one doubted that predefined criteria could cover every situation, particularly as margins shrink and targets become more sensitive to contour variation. The information needed (for example the dosimetric impact of an edit) could in theory be gathered but is rarely practical. One distinguished the “need” to edit, which only outcome can show, from the “desire” to edit, which feedback on impact could inform.",
+   "comments": [
+    {
+     "rating": "1",
+     "text": "I'm not sure all relevant situations can be covered by predefined criteria. And as treatment margins become smaller, greater emphasis is placed on accurate target delineation, while the target volume itself becomes less smooth and more sensitive to contouring variations."
+    },
+    {
+     "rating": "2",
+     "text": "There are criteria (e.g. guidelimes),.they are not really good for this purpose.."
+    },
+    {
+     "rating": "2",
+     "text": "I think \"need\" and \"desire\" are two different aspects. The \"need\" will never be answered, as it depends whether the patient was treated well. \"Desire\" could require feedback, i.e. if extension has little impact, it could be done."
+    },
+    {
+     "rating": "3",
+     "text": "Sufficient information to make a decision can in theory often be gathered, but in often is not feasible in clinical practice. For example it is possible to evaluate the dosimetric impact of difference contour edits, but this wouldnt be practical in most cases"
+    }
+   ]
+  },
+  "A3": {
+   "type": "rating",
+   "section": "A",
+   "text": "Current manual evaluation of clinical targets is sufficient to ascertain which auto-contours need editing.",
+   "counts": {
+    "1": 5,
+    "2": 11,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 1,
+   "disagree_n": 16,
+   "pct_agree": 0.05263157894736842,
+   "pct_neutral": 0.10526315789473684,
+   "pct_disagree": 0.8421052631578947,
+   "median": 2,
+   "q1": 1.5,
+   "q3": 2.0,
+   "result": "Consensus: disagree",
+   "result_key": "disagree",
+   "summary": "Reasons given were that geometric metrics correlate poorly with dose or clinical endpoints; that tools which could support the decision exist but are impractical for routine use; and that target review depends heavily on clinical judgement about patient factors, imaging and uncertain boundaries, so fixed criteria may suit organs at risk better than targets. The one respondent who agreed said the clinician’s opinion is, in effect, the standard, and that the same uncertainty applies to manual contouring as to editing auto-contours.",
+   "comments": [
+    {
+     "rating": "1",
+     "text": "Very little reliable correlation between geometric metrics and dose, or other clinical endpoints."
+    },
+    {
+     "rating": "2",
+     "text": "There are lots of approaches available, some could be sufficient to support decision making, but are impractical and so arent used routinely."
+    },
+    {
+     "rating": "2",
+     "text": "The statement is likely more applicable to OAR contours than to target contours. In target delineation, patient-specific factors, interpretation of imaging findings, and uncertainty at anatomical boundaries often require substantial clinical judgement, making it difficult to rely solely on fixed evaluation criteria."
+    },
+    {
+     "rating": "4",
+     "text": "The opinion of the clinician is it. The same uncertainty applies to manual contouring as editing auto-contouring"
+    }
+   ]
+  },
+  "B1": {
+   "type": "rating",
+   "section": "B",
+   "text": "Two target contours should be considered clinically equivalent when their expected outcomes differ by less than a prespecified, clinically justified tolerance for each relevant tumour control and toxicity endpoint, for the same patient and treatment context.",
+   "counts": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 9,
+    "5": 10,
+    "U": 0
+   },
+   "n_rated": 20,
+   "denominator": 20,
+   "agree_n": 19,
+   "disagree_n": 0,
+   "pct_agree": 0.95,
+   "pct_neutral": 0.05,
+   "pct_disagree": 0.0,
+   "median": 4.5,
+   "q1": 4.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "The one comment agreed in principle but noted that expected endpoints cannot yet be visualised or quantified after radiotherapy, so the definition currently rests on theoretical structures.",
+   "comments": [
+    {
+     "rating": "4",
+     "text": "My research team is working towards visualizing and quantifying just such an expected endpoint. Right now there is no way to visualize an expected endpoint following RT. We are dealing with theoretical structures."
+    }
+   ]
+  },
+  "B2": {
+   "type": "rating",
+   "section": "B",
+   "text": "Expert agreement that two target contours are clinically acceptable is sufficient to classify them as clinically equivalent.",
+   "counts": {
+    "1": 2,
+    "2": 6,
+    "3": 1,
+    "4": 9,
+    "5": 2,
+    "U": 0
+   },
+   "n_rated": 20,
+   "denominator": 20,
+   "agree_n": 11,
+   "disagree_n": 8,
+   "pct_agree": 0.55,
+   "pct_neutral": 0.05,
+   "pct_disagree": 0.4,
+   "median": 4.0,
+   "q1": 2.0,
+   "q3": 4.0,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "Opinion was split. Those disagreeing said experts may agree two contours are acceptable while the contours still differ dosimetrically or make different trade-offs between coverage and sparing; that experts can agree and still be wrong; and that “clinically acceptable” is undefined (tumour control, toxicity or both). Those agreeing described expert agreement as current practice and a reasonable fallback when outcome data are absent, while noting that “acceptable” is not the same as “optimal” or “correct”.",
+   "comments": [
+    {
+     "rating": "1",
+     "text": "They may agree they are acceptable, but also agree they make different tradeoffs between coverage and tissue sparing.\nThey may also agree they are acceptable, but be incorrect!"
+    },
+    {
+     "rating": "2",
+     "text": "They may not be dosimetrically / clinically equivalent"
+    },
+    {
+     "rating": "2",
+     "text": "the question is how to define \"clinically acceptable\": do we refer to RT efficiency in the tumor or toxicity to healthy tissue, or both? they might agree on potential toxicity but not on optimal efficiency. the contour is the starting point of debate, in a way."
+    },
+    {
+     "rating": "4",
+     "text": "This is one, but maybe not the best criterion. Also, \"acceptable\" differs from \"optimal\" or \"correct\"."
+    },
+    {
+     "rating": "4",
+     "text": "Outcome data is warranted, but in the absence of outcome data, expert agreement would suffice."
+    },
+    {
+     "rating": "5",
+     "text": "current practice"
+    }
+   ]
+  },
+  "B3": {
+   "type": "rating",
+   "section": "B",
+   "text": "A target contour that does not conform to clinical guidelines (e.g. is not technically protocol compliant) should be corrected, even if its predicted outcome difference is within the agreed tolerance.",
+   "counts": {
+    "1": 1,
+    "2": 7,
+    "3": 3,
+    "4": 6,
+    "5": 1,
+    "U": 2
+   },
+   "n_rated": 18,
+   "denominator": 18,
+   "agree_n": 7,
+   "disagree_n": 8,
+   "pct_agree": 0.3888888888888889,
+   "pct_neutral": 0.16666666666666666,
+   "pct_disagree": 0.4444444444444444,
+   "median": 3.0,
+   "q1": 2.0,
+   "q3": 4.0,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "Opinion was split. For correction: outcome predictions are uncertain, so protocol compliance is the safer choice; compliant contours may benefit this or future patients; and one linked it to anatomical variation beyond what guidelines cover, relevant for IGRT. Against: a deviation covered by the PTV margin will not change the outcome; justified and documented patient-specific deviations should be allowed; current guidelines do not capture every variable and should be updated as adaptive radiotherapy develops; and practical factors (feasibility, planning time, beam-on time) also weigh in. One respondent questioned how predicted outcome differences would be evaluated given steep dose gradients, and one suggested rewording the condition to a “negligible” difference.",
+   "comments": [
+    {
+     "rating": "1",
+     "text": "Prrhaps change to \"is negligeble\""
+    },
+    {
+     "rating": "2",
+     "text": "if the deviation is covered by the PTV, changing the contour will not change the outcome, so not all contours need to be edited to full protocol compliance."
+    },
+    {
+     "rating": "2",
+     "text": "Current clinical guidelines fail to account for all variables influencing clinical equivalence and should be updated to incorporate findings arising from a more widespread and intensive application of adaptive radiotherapy"
+    },
+    {
+     "rating": "2",
+     "text": "There may be patient specific reasons for deviating from protocol ad as long as these are recorded and justified should be allowed"
+    },
+    {
+     "rating": "3",
+     "text": "My main question here is how you evaluate predicted outcome on different contours. Create a plan for target contour A and evaluate it on target contour B and vice versa. If both are within tolerance, then I agree. But given the strong dosimetric gradients, I am not sure if that happens. On the other hand, GTV to CTV to PTV expasions solve a lot of minor variations."
+    },
+    {
+     "rating": "3",
+     "text": "Other factors may weigh in when not complying to protocol, such as technical factors of feasibility, risk of prolonged treatment planning time, beam-on time for the patient etc. These may not be clinically relevant but could affect the workflow of the clinica and comfort of the patient."
+    },
+    {
+     "rating": "4",
+     "text": "I agree for two reasons\n1. there may be uncertainty in the outcome prediction therefore so its safer to ensure the contour is protocol compliant  \n2. having compliant contours may benefit that patient, or future patients, in future."
+    },
+    {
+     "rating": "4",
+     "text": "Yes to account for anatomical variance that may go beyond clinical guidelines, probably necessary for IGRT if within the cbct field of view"
+    }
+   ]
+  },
+  "B4": {
+   "type": "rating",
+   "section": "B",
+   "text": "When for a given patient multiple contours are available that have been judged to be clinically equivalent, the smallest should be preferred for treatment planning",
+   "counts": {
+    "1": 1,
+    "2": 7,
+    "3": 4,
+    "4": 5,
+    "5": 1,
+    "U": 2
+   },
+   "n_rated": 18,
+   "denominator": 18,
+   "agree_n": 6,
+   "disagree_n": 8,
+   "pct_agree": 0.3333333333333333,
+   "pct_neutral": 0.2222222222222222,
+   "pct_disagree": 0.4444444444444444,
+   "median": 3.0,
+   "q1": 2.0,
+   "q3": 4.0,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "Most comments made agreement conditional. Choosing the smallest contour was seen as reasonable only if the remaining uncertainty is properly covered by margins, immobilisation, IGRT and plan robustness; otherwise it systematically raises the risk of under-dosing or geographic miss. Others said it depends on the setting (in palliative treatment coverage may take priority over toxicity) and on the disease; that all contours should ideally be factored in; that a middle or average contour might be preferable; and that if contours are truly equivalent a random choice would do. Two noted that the statement presupposes a method for judging equivalence, and one suggested moving towards personalised margins and probabilistic planning rather than selecting a single contour.",
+   "comments": [
+    {
+     "rating": "2",
+     "text": "ideally factor in all the contours"
+    },
+    {
+     "rating": "2",
+     "text": "I would say that this depends on the setting. If doing something more palliative, and the doses are still well within tolerance to OARs, my priority sometimes may be ensuring coverage over toxicity, and always choosing the smallest would risk geometrical miss. I think we should eventually be moving away from selecting a binary contour to plan with, and moving towards personalised PTV margins and probabilistic planning"
+    },
+    {
+     "rating": "2",
+     "text": "If clinically equivlent, random selection would suffice."
+    },
+    {
+     "rating": "2",
+     "text": "so much unknowns!"
+    },
+    {
+     "rating": "2",
+     "text": "Use the 'middle' sized/average contour"
+    },
+    {
+     "rating": "3",
+     "text": "\"that have been judged to be clinically equivalent\" is critical here. If they ARE clinically equivalent the statement is true."
+    },
+    {
+     "rating": "3",
+     "text": "It would depend on how the uncertainty in the contour is accounted for. If the variation in the contours are properly measured and accounted for, for example with the correct PTV margin, then using the smallest contour would be reasonable. But if the variation wasnt properly measured and accounted for, then systematically using the smallest would reduce the probability of delivering sufficient dose to the target"
+    },
+    {
+     "rating": "3",
+     "text": "It depends on the accuracy and the disease; a larger contour might be preferred for precautionary reasons regarding precision."
+    },
+    {
+     "rating": "3",
+     "text": "This is multifactorial regarding the 'smallest' as this will be lead by you immobilisation is this robust and in line with that the IGRT what margin can you stand over?"
+    },
+    {
+     "rating": "4",
+     "text": "given margins and plan robustness are adequate for that patient"
+    },
+    {
+     "rating": "U",
+     "text": "See previous comment: how do you evaluate clinical equivalence? I assumed based on differences in treatment planning, but this questions creates a catch-22."
+    }
+   ]
+  },
+  "B5": {
+   "type": "rating",
+   "section": "B",
+   "text": "The acceptable contour range may be narrower in some parts of the target and wider in others.",
+   "counts": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 3,
+    "5": 16,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 19,
+   "disagree_n": 0,
+   "pct_agree": 1.0,
+   "pct_neutral": 0.0,
+   "pct_disagree": 0.0,
+   "median": 5,
+   "q1": 5.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "Commenters gave reasons the range might vary: it could be tighter at bone or air–tissue boundaries than in soft tissue, and would depend on nearby organs at risk, anatomical boundaries and knowledge of microscopic spread. One asked whether motion (for example in lung) would be included or is already accounted for elsewhere.",
+   "comments": [
+    {
+     "rating": "4",
+     "text": "Bone and air to tissue boundaries could be tighter than soft tissue"
+    },
+    {
+     "rating": "5",
+     "text": "It depends on the types of OARs near the target"
+    },
+    {
+     "rating": "5",
+     "text": "anatomical boundaries and knowledge about cell spread play a role"
+    },
+    {
+     "rating": "5",
+     "text": "In lung this would be applicable depending on motion or would this already be taken into consideration?"
+    }
+   ]
+  },
+  "B6": {
+   "type": "rating",
+   "section": "B",
+   "text": "The acceptable range for a target contour will vary depending on conditions that generalise across centres such as treatment intent and modality. (e.g., the range can be generalised across treatment centres based on treatment intent and modality)",
+   "counts": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 9,
+    "5": 9,
+    "U": 0
+   },
+   "n_rated": 20,
+   "denominator": 20,
+   "agree_n": 18,
+   "disagree_n": 2,
+   "pct_agree": 0.9,
+   "pct_neutral": 0.0,
+   "pct_disagree": 0.1,
+   "median": 4.0,
+   "q1": 4.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "In support: plan quality and modality (for example IMPT versus VMAT) change the dose gradient and so how much contour variation can be tolerated; palliative treatments could be more lenient than SRS; and IGRT, SGRT and immobilisation also matter. Cautions: technique and dose prescription are often centre-specific, and multicentre planning studies show that desired dose distributions can differ widely even with the same intent and modality.",
+   "comments": [
+    {
+     "rating": "2",
+     "text": "It will also depend on treatment technique and dose prescription, which are often center-specific."
+    },
+    {
+     "rating": "4",
+     "text": "High quality plans have sharper gradients. Different modalities have sharper gradients (IMPT vs VMAT). The gradient may provide some leniency in contour accuracy."
+    },
+    {
+     "rating": "4",
+     "text": "multicenter studies on planning the same target show that desired dose distributions can be very different even with the same treatment intent and modality."
+    },
+    {
+     "rating": "4",
+     "text": "Palliative intent versus SRS, contouring precision will realistically under a more thorough evaluation, and should be more lenient for palliative intent"
+    },
+    {
+     "rating": "5",
+     "text": "IGRT and SGRT availability and immobilization also"
+    }
+   ]
+  },
+  "B7": {
+   "type": "rating",
+   "section": "B",
+   "text": "The acceptable range for a target contour will be determined by local validation of acceptability ranges since derived ranges might depend on local context (e.g., patient characteristics, treatment options etc.)",
+   "counts": {
+    "1": 0,
+    "2": 0,
+    "3": 5,
+    "4": 9,
+    "5": 5,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 14,
+   "disagree_n": 0,
+   "pct_agree": 0.7368421052631579,
+   "pct_neutral": 0.2631578947368421,
+   "pct_disagree": 0.0,
+   "median": 4,
+   "q1": 3.5,
+   "q3": 4.5,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "Two respondents were unsure what “local validation” would mean in practice, one worrying it could slide back towards personal opinion, and another asked whether margins are also relevant. Supporters saw local validation or local input as needed for safety and to reflect local data, intent and approaches, with internal consensus as a prerequisite; one suggested simplifying the statement to “ranges depend on local context and are therefore not generalisable across centres”. Others expected local dependence to be real but thought local validation would be impractical and would hinder adoption, by analogy with PTV margins, and one preferred strict protocols generalised across clinics.",
+   "comments": [
+    {
+     "rating": "3",
+     "text": "I think this slides towards \"personal opinion\". What \"local validation\" is would be critical."
+    },
+    {
+     "rating": "3",
+     "text": "would margins also be relevant here too?"
+    },
+    {
+     "rating": "3",
+     "text": "I don't understand what \"local validation\" means"
+    },
+    {
+     "rating": "4",
+     "text": "In theory yes, but in practice this wont work.. similar to ptv margins"
+    },
+    {
+     "rating": "4",
+     "text": "I'm afraid it will be - but this will enormously impact adoption of the bandwith"
+    },
+    {
+     "rating": "4",
+     "text": "Based on strict protocols that are generalized over all clinics"
+    },
+    {
+     "rating": "4",
+     "text": "validation is always good - (internal) consensus is a prerequisite"
+    },
+    {
+     "rating": "4",
+     "text": "For safety and to ensure the bandwidths represent local data, intent, approaches, i would imagine they need some degree of local validation or local input in their formation. I would make this statement simpler: Ranges would depend on local context and are therefore not generalizable across centers."
+    }
+   ]
+  },
+  "B8": {
+   "type": "rating",
+   "section": "B",
+   "text": "I expect an equivalence range could be generated or adapted for an individual patient and used to guide target-contour review within the time available for routine initial treatment planning.",
+   "counts": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 13,
+    "5": 5,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 18,
+   "disagree_n": 0,
+   "pct_agree": 0.9473684210526315,
+   "pct_neutral": 0.05263157894736842,
+   "pct_disagree": 0.0,
+   "median": 4,
+   "q1": 4.0,
+   "q3": 4.5,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "Agreement came with caveats: it may be achievable for small targets and could help clinicians accept boundary uncertainty instead of committing to a single deterministic contour; it would need large datasets and fairly comparable patients within a treatment group; it was described as the direction of travel rather than current practice; and it may first be more useful for commissioning and evaluation, as it could be time-consuming.",
+   "comments": [
+    {
+     "rating": "3",
+     "text": "i think it might be initially more of a concept for commissioning and evaluation- it could be quite time consuming"
+    },
+    {
+     "rating": "4",
+     "text": "This depends on the size of the target - if the target is fairly small, this is achievable and may  help the contouring process as rather than committing to a single deterministic contour, you can accept that there is a degree of uncertainty that exists around the boundaries."
+    },
+    {
+     "rating": "4",
+     "text": "big data, and only if patients within a treatment group are relatively comparable"
+    },
+    {
+     "rating": "5",
+     "text": "This is where we should go. Not necessarily where we are roght now"
+    }
+   ]
+  },
+  "B9": {
+   "type": "rating",
+   "section": "B",
+   "text": "I expect an equivalence range could be generated or updated and used to guide target-contour review within the time available during an online adaptive radiotherapy session.",
+   "counts": {
+    "1": 1,
+    "2": 0,
+    "3": 2,
+    "4": 10,
+    "5": 6,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 16,
+   "disagree_n": 1,
+   "pct_agree": 0.8421052631578947,
+   "pct_neutral": 0.10526315789473684,
+   "pct_disagree": 0.05263157894736842,
+   "median": 4,
+   "q1": 4.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "Feasibility was seen to depend on how the range is generated and validated, and on prerequisites such as correct reference imaging and good image quality at the treatment unit. An auto-generated or pre-set range was thought likely to help contour approval online, especially because the person approving contours during an adaptive session is often an RTT. The one respondent who strongly disagreed argued that development of the range should not be limited by the strict time constraints of online adaptive radiotherapy, which suggests a different reading of the statement.",
+   "comments": [
+    {
+     "rating": "1",
+     "text": "The development of an equivalent range should not be limited by the extremely strict time conditions of adaptive radiotherapy."
+    },
+    {
+     "rating": "3",
+     "text": "It really depends on how equivalence is generated, validated etc"
+    },
+    {
+     "rating": "3",
+     "text": "if this range has initially been set, it might help with contour approval in online adaptive"
+    },
+    {
+     "rating": "4",
+     "text": "Auto-contour generated equivalence range would allow the range to be used to guide target-contour review in online adaptive RT session."
+    },
+    {
+     "rating": "4",
+     "text": "prerequisite: correct imaging for reference plans, good image quality at treatment unit."
+    },
+    {
+     "rating": "5",
+     "text": "The equivalence range is crucial for adaptive RT, as the figure designated to accept the contour is frequently an RTT."
+    }
+   ]
+  },
+  "B10": {
+   "type": "rating",
+   "section": "B",
+   "text": "Before an equivalence range is used to guide contour review, its suitability should be assessed for the individual patient’s anatomy, disease extent and planned treatment.",
+   "counts": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 10,
+    "5": 8,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 18,
+   "disagree_n": 1,
+   "pct_agree": 0.9473684210526315,
+   "pct_neutral": 0.0,
+   "pct_disagree": 0.05263157894736842,
+   "median": 4,
+   "q1": 4.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "Agreement: patient-level assessment was seen as defining where the range can safely be used and as a safety net for clinicians adopting computer-generated contours. One respondent urged pragmatism in practice, and one asked whether retrospective QA of contouring could play a role.",
+   "comments": [
+    {
+     "rating": "4",
+     "text": "Again in thepry yes, but we should remain pragmatic in the end"
+    },
+    {
+     "rating": "4",
+     "text": "This is an important part of defining the \"playground\" in which we can suggest the use of the bandwidth. I think we should insist on this as it will give doctors the safety net for using computerized contouring."
+    },
+    {
+     "rating": "5",
+     "text": "QA on contouring retrospectively?"
+    }
+   ]
+  },
+  "B11": {
+   "type": "rating",
+   "section": "B",
+   "text": "Where functional imaging contributes to defining the target volume, that information should also inform the definition of its equivalence range.",
+   "counts": {
+    "1": 0,
+    "2": 0,
+    "3": 3,
+    "4": 10,
+    "5": 7,
+    "U": 0
+   },
+   "n_rated": 20,
+   "denominator": 20,
+   "agree_n": 17,
+   "disagree_n": 0,
+   "pct_agree": 0.85,
+   "pct_neutral": 0.15,
+   "pct_disagree": 0.0,
+   "median": 4.0,
+   "q1": 4.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "Functional imaging could narrow the range by improving target definition, particularly where it correlates with outcome, but its value depends on context and the imaging used; pre-treatment functional imaging was seen as usable, on-treatment imaging (such as F-MISO) not yet. Concerns were registration errors between functional and planning images, the fact that deformation uncertainty is not yet used clinically either, and the view that equivalence is set by downstream steps (optimisation, dose calculation), so functional imaging should inform the range only if it changes the dose distribution, for example through the prescription or technique.",
+   "comments": [
+    {
+     "rating": "3",
+     "text": "Due to errors around the planning scan - functional imaging registrations, I am unsure how useful functional imaging would be in clinical setting."
+    },
+    {
+     "rating": "3",
+     "text": "No, because equivalence is determined by the next steps in the treatment chain (e.g., treatment plan optimization and dose calculation) and not by the previous steps\nYes, if functional imaging information would affect the dose distribution (dose prescription, technique...)"
+    },
+    {
+     "rating": "4",
+     "text": "in clinical practise, we are not even using uncertainty maps for deformations, which also can impact what voxel belongs to target volume or not..."
+    },
+    {
+     "rating": "4",
+     "text": "Pre treat functional imaging yes, we are not there with on treat functional imaging eg. F-MISO etc"
+    },
+    {
+     "rating": "4",
+     "text": "Functional imaging may allow our targets to be better defined - smaller bandwith. But im not sure if it should always be used. Very dependant on context and what imaging is used."
+    },
+    {
+     "rating": "5",
+     "text": "Particularly if the functional imaging can be shown to correlate with clinical outcome"
+    }
+   ]
+  },
+  "C1": {
+   "type": "rating",
+   "section": "C",
+   "text": "Before defining an acceptable contour range, a contouring guideline or documented clinical agreement should specify what the target is intended to include.",
+   "counts": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 8,
+    "5": 11,
+    "U": 0
+   },
+   "n_rated": 20,
+   "denominator": 20,
+   "agree_n": 19,
+   "disagree_n": 0,
+   "pct_agree": 0.95,
+   "pct_neutral": 0.05,
+   "pct_disagree": 0.0,
+   "median": 5.0,
+   "q1": 4.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "Agreement, with caveats: a guideline is strongly recommended as a starting point rather than an absolute prerequisite; current guidelines may not describe the areas of uncertainty where a range would apply and may need revisiting; and the guideline should be specified together with the method used to create the range, the treatment intent, the technique and the indications for which the range is validated.",
+   "comments": [
+    {
+     "rating": "3",
+     "text": "not an absolute prerequisite however always strongly recommended to start from guideline/agreement"
+    },
+    {
+     "rating": "4",
+     "text": "but these guidelines may not yet discuss areas of uncertainty/ where the range may exist- and perhaps contouring guidelines should be re-reviewed"
+    },
+    {
+     "rating": "4",
+     "text": "contouring guideline should be specified with the model to create ranges, along with treatment intent, technique and other variables. for which indications is the range validated and applicable?"
+    }
+   ]
+  },
+  "C2": {
+   "type": "rating",
+   "section": "C",
+   "text": "Inner and outer contours drawn by experts on representative cases are a reasonable proxy for constructing a candidate clinically equivalent range.",
+   "counts": {
+    "1": 3,
+    "2": 1,
+    "3": 5,
+    "4": 9,
+    "5": 2,
+    "U": 0
+   },
+   "n_rated": 20,
+   "denominator": 20,
+   "agree_n": 11,
+   "disagree_n": 4,
+   "pct_agree": 0.55,
+   "pct_neutral": 0.25,
+   "pct_disagree": 0.2,
+   "median": 4.0,
+   "q1": 3.0,
+   "q3": 4.0,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "Critics said expert inner and outer contours may only measure inter-observer variation or clinicians’ uncertainty rather than clinical equivalence, doubted that experts can do this reliably, and noted that it ignores the dosimetric impact of contour differences; one reported that a local lung study found it very difficult and did not continue. Supporters saw it as necessary to show feasibility and to win clinicians’ trust by letting them see the range, provided dosimetric factors are also included; representative cases may only be feasible for some tumour sites. One respondent distinguished experts’ own (un)certainty estimates from inter- and intra-observer variation, both of which are informative.",
+   "comments": [
+    {
+     "rating": "1",
+     "text": "I suspect that is just a surrogate measure of IOV, and represents the clinician's uncertainty rather than actual clinical equivalence."
+    },
+    {
+     "rating": "1",
+     "text": "I understand this statement from a practical point of view, but it ignores the dosimetric impact of contour differences, which is why I strongly disagree"
+    },
+    {
+     "rating": "2",
+     "text": "I do not think experts can truly do this"
+    },
+    {
+     "rating": "3",
+     "text": "What you request here is to draw up expert (un)certainty estimates, which is different form inter/intra-expert variations. Both are interesting and show different insights."
+    },
+    {
+     "rating": "3",
+     "text": "It could serve as a strong recommendation, provided that dosimetric factors are also incorporated."
+    },
+    {
+     "rating": "4",
+     "text": "I think it is necessary in order to prove it is feasible. Seeing the bandwidth in their own eyes will be crucial to convincing doctors to use it."
+    },
+    {
+     "rating": "4",
+     "text": "yes but representativeness of patients will be a challenge and might only be feasible for a selected number of tumour sites"
+    },
+    {
+     "rating": "4",
+     "text": "side note, as I think that for some indications this might work. However, our local study for lung tumor delineation demonstrated that this is very difficult to achieve, and we have not continued this part of the study."
+    }
+   ]
+  },
+  "C3": {
+   "type": "rating",
+   "section": "C",
+   "text": "The intersection (inner boundary) and union (outer boundary) of protocol-compliant expert target contours are sufficient to define a clinically acceptable range.",
+   "counts": {
+    "1": 3,
+    "2": 3,
+    "3": 3,
+    "4": 7,
+    "5": 1,
+    "U": 3
+   },
+   "n_rated": 17,
+   "denominator": 17,
+   "agree_n": 8,
+   "disagree_n": 6,
+   "pct_agree": 0.47058823529411764,
+   "pct_neutral": 0.17647058823529413,
+   "pct_disagree": 0.35294117647058826,
+   "median": 3,
+   "q1": 2.0,
+   "q3": 4.0,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "The main concern was that intersection and union are defined by the most extreme contours, so the range may become too wide, as inter-observer variation is often larger than clinicians would accept; it also depends on the number and choice of experts. Others noted that a shape lying within the bounds can still be implausible, so the range might be acceptable but not equivalent, and that more than the extremes needs discussing; one suggested an extra consensus round given known variability in protocol interpretation. Supporters saw it as a practical starting point, or sufficient provided the surrounding organs at risk stay the same. One respondent did not understand the statement.",
+   "comments": [
+    {
+     "rating": "1",
+     "text": "disagree as IOV is often very large, and larger than clinicians would accept clinically. For for example, assuming the contours are Normally distributed and we had enough of them, we would expect the range to be large as its defined by the extremes"
+    },
+    {
+     "rating": "2",
+     "text": "This can be very dependent on experts, number of experts, and a different approach to experts defining ranges"
+    },
+    {
+     "rating": "2",
+     "text": "Clinically acceptable - maybe, but I could draw a crazy non-plausible shape within the bounds potentially. Clinically equivalent - No"
+    },
+    {
+     "rating": "2",
+     "text": "It has the risk to become overly wide to take intersection and union, I would suggest an extra round of consensus discussions (since we know there is lots of variability in protocol interpretation)"
+    },
+    {
+     "rating": "3",
+     "text": "in theory should be aiming for contours comparable to IOV, however this may not be a complete clinically acceptable range"
+    },
+    {
+     "rating": "3",
+     "text": "I don't understand what you mean"
+    },
+    {
+     "rating": "4",
+     "text": "It could be sufficient if the surrounding OARs remain the same."
+    },
+    {
+     "rating": "4",
+     "text": "it is a practical solution to start."
+    },
+    {
+     "rating": "U",
+     "text": "I think there is more discussions than only the extremities."
+    }
+   ]
+  },
+  "C4": {
+   "type": "rating",
+   "section": "C",
+   "text": "When tumour-control modelling is used to assess equivalence ranges, its predictions should be evaluated alongside available recurrence-pattern data relevant to the tumour site and target type.",
+   "counts": {
+    "1": 0,
+    "2": 1,
+    "3": 4,
+    "4": 11,
+    "5": 3,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 14,
+   "disagree_n": 1,
+   "pct_agree": 0.7368421052631579,
+   "pct_neutral": 0.21052631578947367,
+   "pct_disagree": 0.05263157894736842,
+   "median": 4,
+   "q1": 3.5,
+   "q3": 4.0,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "Seen as ideal but difficult. Recurrence-pattern data are statistical and confounded (by GTV–CTV and CTV–PTV margins and treatment duration, with geographic miss only one cause of recurrence), and tumour-control models carry large uncertainty for individual decisions. One respondent felt the real point is to use only validated TCP models, one added “if available”, and another noted that an alternative tumour contour cannot simply be evaluated.",
+   "comments": [
+    {
+     "rating": "2",
+     "text": "\"its predictions should be evaluated alongside available recurrence-pattern data\": isn't this more about using only validated TCP-models (which seems obvious to me if you will be using TCP models to assess equivalence ranges)?"
+    },
+    {
+     "rating": "3",
+     "text": "ideal, but difficult"
+    },
+    {
+     "rating": "3",
+     "text": "that would be nice, but im not sure how realistic it would be. furthermore, tumour control modelling has a lot of uncertainty, so its hard to give it a lot of weight on decision making for an individual patient"
+    },
+    {
+     "rating": "3",
+     "text": "Recurrence-pattern data are difficult to interpret because they are influenced by multiple factors, including variation in GTV–CTV and CTV–PTV margins and overall treatment duration. Geographical miss is only one contributor to local recurrence, making it difficult to derive equivalence ranges directly from observed recurrence patterns."
+    },
+    {
+     "rating": "4",
+     "text": "But, currently the recurrence patterns data is statistical so not very informative. My own research touches on this problem: since we are not taking into consideration biological patient data when making RT plans, we are in the fog considering future chances of recurrence/toxicity."
+    },
+    {
+     "rating": "4",
+     "text": "But again, as long as it concerns the tumour contour, you cannot simply evaluate an alternative contour."
+    },
+    {
+     "rating": "4",
+     "text": "if available?"
+    }
+   ]
+  },
+  "C5": {
+   "type": "rating",
+   "section": "C",
+   "text": "Models of disease spread and treatment outcome (such as TCP/NTCP) are a reasonable basis for constructing candidate ranges, provided their uncertainty is accounted for.",
+   "counts": {
+    "1": 0,
+    "2": 4,
+    "3": 2,
+    "4": 8,
+    "5": 5,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 13,
+   "disagree_n": 4,
+   "pct_agree": 0.6842105263157895,
+   "pct_neutral": 0.10526315789473684,
+   "pct_disagree": 0.21052631578947367,
+   "median": 4,
+   "q1": 3.0,
+   "q3": 4.5,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "Most comments were reservations: validated models do not exist for most scenarios, and the uncertainties in current models are too large for this purpose. One respondent suggested keeping models of disease spread and outcome models as separate entities for simplicity, and one noted that results may depend on the priorities applied in dose optimisation.",
+   "comments": [
+    {
+     "rating": "2",
+     "text": "the uncertainties in those models are too big"
+    },
+    {
+     "rating": "2",
+     "text": "I think that currently these models are not good enough."
+    },
+    {
+     "rating": "2",
+     "text": "For simplicity should they not be left as separate entities"
+    },
+    {
+     "rating": "3",
+     "text": "need to have validated models which do not exist for most scenarios"
+    },
+    {
+     "rating": "4",
+     "text": "but may very depend on priorities applied in dose optimalisation"
+    }
+   ]
+  },
+  "C6": {
+   "type": "rating",
+   "section": "C",
+   "text": "Before a contour range is described as clinically equivalent, its use should be supported by prospective patient outcome data demonstrating equivalence within prespecified tolerances. (Surrogates such as expert consensus, model prediction, or dose equivalence are not sufficient)",
+   "counts": {
+    "1": 1,
+    "2": 8,
+    "3": 2,
+    "4": 6,
+    "5": 3,
+    "U": 0
+   },
+   "n_rated": 20,
+   "denominator": 20,
+   "agree_n": 9,
+   "disagree_n": 9,
+   "pct_agree": 0.45,
+   "pct_neutral": 0.1,
+   "pct_disagree": 0.45,
+   "median": 3.0,
+   "q1": 2.0,
+   "q3": 4.0,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "Most commenters saw prospective outcome data as desirable but impractical at scale, noting that in sites with high cure rates such as breast it could take a decade or more, and that making it a requirement could stall the concept and leave current practice unchanged. Many felt validated surrogates (expert consensus, inter-observer variation, models, dose) are adequate for now, with outcome evidence collected afterwards, prospectively or retrospectively. Those agreeing saw outcome data as the long-term aim; one noted that systematic biases in auto-segmentation models could have unforeseen consequences.",
+   "comments": [
+    {
+     "rating": "1",
+     "text": "I would apply it retrospectively, otherwise, you have to wait for a decade or so to obtain answers on clinical outcomes where many patients are cured (e.g. breast)"
+    },
+    {
+     "rating": "2",
+     "text": "not feasible in most scenarios"
+    },
+    {
+     "rating": "2",
+     "text": "it would be nice but its impractical and wouldnt happen at scale, making this a requirement would kill the concept and leave us in our current status quo which isnt very good"
+    },
+    {
+     "rating": "2",
+     "text": "Wpuld be great of course but not necessary"
+    },
+    {
+     "rating": "2",
+     "text": "Prospective outcome collection would be useful but surrogates would also be adequate. Inter-observer variation is used as a surrogate of delineation uncertainty, for example, when the ultimate test of delineation uncertainty is recurrence pattern."
+    },
+    {
+     "rating": "2",
+     "text": "Validated surrogates should also be fine to use"
+    },
+    {
+     "rating": "2",
+     "text": "The word \"Should\" here is not easy to answer, as it’s just not practical. We may need to just use surrogates for now, and then rely on testing to verify. In our case, we may have suitable surrogates to allow us define best guesses now, and then prospectively test later."
+    },
+    {
+     "rating": "3",
+     "text": "i'm not sure how feasible this would be"
+    },
+    {
+     "rating": "4",
+     "text": "just as with every new technique, evidence to be collected (could be done prospectively).\npossible systematic biases in auto-segmentation models might have unforeseen consequences"
+    },
+    {
+     "rating": "5",
+     "text": "This should be the aim; however statements C2-C5 are good surrogates meanwhile."
+    }
+   ]
+  },
+  "C7": {
+   "type": "rating",
+   "section": "C",
+   "text": "Acceptable ranges need to be constructed on a patient specific basis.",
+   "counts": {
+    "1": 0,
+    "2": 3,
+    "3": 2,
+    "4": 12,
+    "5": 2,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 14,
+   "disagree_n": 3,
+   "pct_agree": 0.7368421052631579,
+   "pct_neutral": 0.10526315789473684,
+   "pct_disagree": 0.15789473684210525,
+   "median": 4,
+   "q1": 3.5,
+   "q3": 4.0,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "Views were mixed. Some favoured standard ranges with patient-specific adjustment, or ranges by patient category, rather than constructing each range from scratch, and saw them as something a clinician interprets rather than ground truth. Others felt much patient-specific information should be included, as statistical models from past populations are not good enough, and called it ultimately the best approach for personalised adaptive radiotherapy. One noted that clinical significance depends on the width of the range, and one was unsure what extra patient-specific information would be available.",
+   "comments": [
+    {
+     "rating": "2",
+     "text": "Patient category should suffice"
+    },
+    {
+     "rating": "2",
+     "text": "should be standards with pt specfic deviations"
+    },
+    {
+     "rating": "3",
+     "text": "For personalized ART this would ultimately be the best!"
+    },
+    {
+     "rating": "4",
+     "text": "I think that a lot of types of patient-specific information should be included in the construction of a range. I'm not sure how to do it but I know that statistical models from past populations are not good enough."
+    },
+    {
+     "rating": "4",
+     "text": "this is range dependent, which then brings in the clinical significance"
+    },
+    {
+     "rating": "4",
+     "text": "I dont expect they should be completely constructed from nothing. Modified, or adapted on a patient specific basis maybe. Maybe even interpreted by a clinician, not solely relied upon as perfect truth."
+    },
+    {
+     "rating": "U",
+     "text": "I do not know what extra information would be available."
+    }
+   ]
+  },
+  "C8": {
+   "type": "rating",
+   "section": "C",
+   "text": "Using dose equivalence is a reasonable basis for identifying candidate limits of equivalent contour variation when reliable outcome models are unavailable.",
+   "counts": {
+    "1": 0,
+    "2": 2,
+    "3": 4,
+    "4": 10,
+    "5": 3,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 13,
+   "disagree_n": 2,
+   "pct_agree": 0.6842105263157895,
+   "pct_neutral": 0.21052631578947367,
+   "pct_disagree": 0.10526315789473684,
+   "median": 4,
+   "q1": 3.0,
+   "q3": 4.0,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "The one comment noted that similar dose leads to similar NTCP in any case.",
+   "comments": [
+    {
+     "rating": "5",
+     "text": "Similar dose results in similar NTCP anyway."
+    }
+   ]
+  },
+  "C9": {
+   "type": "rating",
+   "section": "C",
+   "text": "Validation of the contour range should be done by including plans optimised using different contours within the candidate range, with all plans assessed against the same independently specified evaluation target.",
+   "counts": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 9,
+    "5": 5,
+    "U": 2
+   },
+   "n_rated": 18,
+   "denominator": 18,
+   "agree_n": 14,
+   "disagree_n": 3,
+   "pct_agree": 0.7777777777777778,
+   "pct_neutral": 0.05555555555555555,
+   "pct_disagree": 0.16666666666666666,
+   "median": 4.0,
+   "q1": 4.0,
+   "q3": 4.75,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "One respondent was unsure whether this meant validation for each patient (impractical clinically) or at commissioning (agreeable), which suggests the statement needs clarifying. One disagreed only with assessing all plans against the same independently specified evaluation target; one noted that the approach is biased towards the planning process and planning expertise; and one felt it is only possible with automated planning that applies the same priorities to target and organs at risk.",
+   "comments": [
+    {
+     "rating": "2",
+     "text": "Disagree only with the last part: \"with all plans assessed against the same independently specified evaluation target\""
+    },
+    {
+     "rating": "2",
+     "text": "This has a bias to the treatment planning process and treatment planning expertise."
+    },
+    {
+     "rating": "4",
+     "text": "only possible with automated planning that apply same priorities between target and OARs."
+    },
+    {
+     "rating": "U",
+     "text": "im not sure if the question means \n- on a patient by patient basis - in which case i disagree as its not practical in a clinical setting, \n- or at a commissioning or implementation phase, in which case i agree"
+    }
+   ]
+  },
+  "C10": {
+   "type": "rating",
+   "section": "C",
+   "text": "Equivalence bands will always be constructed based on stochastic components. Therefore, equivalence bands will only be valid for an average patient or proportion of patients, it may not be applicable to the whole population.",
+   "counts": {
+    "1": 1,
+    "2": 4,
+    "3": 1,
+    "4": 8,
+    "5": 6,
+    "U": 0
+   },
+   "n_rated": 20,
+   "denominator": 20,
+   "agree_n": 14,
+   "disagree_n": 5,
+   "pct_agree": 0.7,
+   "pct_neutral": 0.05,
+   "pct_disagree": 0.25,
+   "median": 4.0,
+   "q1": 2.75,
+   "q3": 5.0,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "Two respondents who disagreed said ranges should be patient-specific, and that the effect of contour variation depends strongly on individual anatomy. One who agreed added that clinical judgement is still required.",
+   "comments": [
+    {
+     "rating": "1",
+     "text": "When you create treatment plans for each contour variation, I suspect it highly depends on the patient anatomy whether it has a large impact or not."
+    },
+    {
+     "rating": "2",
+     "text": "I think they should be patient-specific."
+    },
+    {
+     "rating": "5",
+     "text": "clinical judgement still required"
+    }
+   ]
+  },
+  "C11": {
+   "type": "rating",
+   "section": "C",
+   "text": "Given (C9) : I would feel comfortable with equivalence for >99% of patients",
+   "counts": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 8,
+    "5": 8,
+    "U": 3
+   },
+   "n_rated": 17,
+   "denominator": 17,
+   "agree_n": 16,
+   "disagree_n": 1,
+   "pct_agree": 0.9411764705882353,
+   "pct_neutral": 0.0,
+   "pct_disagree": 0.058823529411764705,
+   "median": 4,
+   "q1": 4.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "Two respondents answered U because they disagreed with C10 or because it would depend on a risk analysis. One respondent who disagreed said they would find the concept useful at 90–95%, and one who agreed added “or lower”. This suggests C11–C15 were occasionally read in different ways (as a minimum requirement or as a level the respondent would accept).",
+   "comments": [
+    {
+     "rating": "2",
+     "text": "I would find it useful as a concept for evaluation even in as low as 90-95% patients"
+    },
+    {
+     "rating": "5",
+     "text": "Or lower ;)"
+    },
+    {
+     "rating": "U",
+     "text": "I disagreed with C10"
+    },
+    {
+     "rating": "U",
+     "text": "dependent on the outcome of the risk analysis"
+    }
+   ]
+  },
+  "C12": {
+   "type": "rating",
+   "section": "C",
+   "text": "Given (C9) : I would feel comfortable with equivalence for >95% of patients",
+   "counts": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 12,
+    "5": 4,
+    "U": 3
+   },
+   "n_rated": 17,
+   "denominator": 17,
+   "agree_n": 16,
+   "disagree_n": 1,
+   "pct_agree": 0.9411764705882353,
+   "pct_neutral": 0.0,
+   "pct_disagree": 0.058823529411764705,
+   "median": 4,
+   "q1": 4.0,
+   "q3": 4.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "Both comments explained U responses: the respondent had disagreed with C10, or the answer would depend on a risk analysis.",
+   "comments": [
+    {
+     "rating": "U",
+     "text": "I disagreed with C10"
+    },
+    {
+     "rating": "U",
+     "text": "dependent on the outcome of the risk analysis"
+    }
+   ]
+  },
+  "C13": {
+   "type": "rating",
+   "section": "C",
+   "text": "Given (C9) : I would feel comfortable with equivalence for >90% of patients",
+   "counts": {
+    "1": 0,
+    "2": 7,
+    "3": 1,
+    "4": 9,
+    "5": 0,
+    "U": 3
+   },
+   "n_rated": 17,
+   "denominator": 17,
+   "agree_n": 9,
+   "disagree_n": 7,
+   "pct_agree": 0.5294117647058824,
+   "pct_neutral": 0.058823529411764705,
+   "pct_disagree": 0.4117647058823529,
+   "median": 4,
+   "q1": 2.0,
+   "q3": 4.0,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "Both comments explained U responses: the respondent had disagreed with C10, or the answer would depend on a risk analysis.",
+   "comments": [
+    {
+     "rating": "U",
+     "text": "I disagreed with C10"
+    },
+    {
+     "rating": "U",
+     "text": "dependent on the outcome of the risk analysis"
+    }
+   ]
+  },
+  "C14": {
+   "type": "rating",
+   "section": "C",
+   "text": "Given (C9) : I would feel comfortable with equivalence for >75% of patients",
+   "counts": {
+    "1": 4,
+    "2": 8,
+    "3": 4,
+    "4": 0,
+    "5": 0,
+    "U": 4
+   },
+   "n_rated": 16,
+   "denominator": 16,
+   "agree_n": 0,
+   "disagree_n": 12,
+   "pct_agree": 0.0,
+   "pct_neutral": 0.25,
+   "pct_disagree": 0.75,
+   "median": 2.0,
+   "q1": 1.75,
+   "q3": 2.25,
+   "result": "Consensus: disagree",
+   "result_key": "disagree",
+   "summary": "Both comments explained U responses: the respondent had disagreed with C10, or the answer would depend on a risk analysis.",
+   "comments": [
+    {
+     "rating": "U",
+     "text": "I disagreed with C10"
+    },
+    {
+     "rating": "U",
+     "text": "dependent on the outcome of the risk analysis"
+    }
+   ]
+  },
+  "C15": {
+   "type": "rating",
+   "section": "C",
+   "text": "Given (C9) : I would feel comfortable with equivalence for >50% of patients",
+   "counts": {
+    "1": 9,
+    "2": 7,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "U": 4
+   },
+   "n_rated": 16,
+   "denominator": 16,
+   "agree_n": 0,
+   "disagree_n": 16,
+   "pct_agree": 0.0,
+   "pct_neutral": 0.0,
+   "pct_disagree": 1.0,
+   "median": 1.0,
+   "q1": 1.0,
+   "q3": 2.0,
+   "result": "Consensus: disagree",
+   "result_key": "disagree",
+   "summary": "Three comments explained U responses: disagreement with C10, dependence on a risk analysis, and the view that at this level it starts to depend on the extremes. One respondent who disagreed noted that template development and automated planning always aim for much wider applicability.",
+   "comments": [
+    {
+     "rating": "2",
+     "text": "for template development or automated planning, we always aim for a much larger applicability."
+    },
+    {
+     "rating": "U",
+     "text": "I disagreed with C10"
+    },
+    {
+     "rating": "U",
+     "text": "At some point, this start to depend on the extremities."
+    },
+    {
+     "rating": "U",
+     "text": "dependent on the outcome of the risk analysis"
+    }
+   ]
+  },
+  "D1": {
+   "type": "rating",
+   "section": "D",
+   "text": "When an automatic contour lies within the validated equivalence range, further editing solely to match personal preference is not required or warranted.",
+   "counts": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 8,
+    "5": 8,
+    "U": 0
+   },
+   "n_rated": 20,
+   "denominator": 20,
+   "agree_n": 16,
+   "disagree_n": 3,
+   "pct_agree": 0.8,
+   "pct_neutral": 0.05,
+   "pct_disagree": 0.15,
+   "median": 4.0,
+   "q1": 4.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "Caveats: patient conditions or other factors may still justify editing within the validated range, and further editing may be warranted where an adjacent organ at risk inside the inner border needs sparing. One respondent suggested stronger wording, that such editing should be actively prevented.",
+   "comments": [
+    {
+     "rating": "2",
+     "text": "patient conditions or other factors may apply to deviate from the automated contour withing the validated equivalence range."
+    },
+    {
+     "rating": "4",
+     "text": "I would say only in case of an adjacent OAR that need to be spare remaining inside the inner border of the equivalence range"
+    },
+    {
+     "rating": "5",
+     "text": "\"Should be actively prvented?\""
+    }
+   ]
+  },
+  "D2": {
+   "type": "rating",
+   "section": "D",
+   "text": "Evaluation of the impact on human decision making of displayed acceptable range should be undertaken to measure whether reviewers can still detect clinically important contour errors vs. edits with no impact to outcome.",
+   "counts": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 14,
+    "5": 5,
+    "U": 0
+   },
+   "n_rated": 20,
+   "denominator": 20,
+   "agree_n": 19,
+   "disagree_n": 0,
+   "pct_agree": 0.95,
+   "pct_neutral": 0.05,
+   "pct_disagree": 0.0,
+   "median": 4.0,
+   "q1": 4.0,
+   "q3": 4.25,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "One respondent questioned why this was singled out, since it applies to any automation, and another described it as an interesting study. One stressed that it requires insight, should inform the training of new staff who cannot rely on years of experience, and may depend on the width of the range (for example 1 mm versus 5 mm).",
+   "comments": [
+    {
+     "rating": "3",
+     "text": "I don't see why, other than the fact that this applies to everything related to automation?"
+    },
+    {
+     "rating": "4",
+     "text": "requires insight! should also be taken into account when training new personnel in radiotherapy that cannot rely on years of experience. Also may depend on the range, e.g. is it 1 mm or 5 mm?"
+    },
+    {
+     "rating": "5",
+     "text": "This is an interesting study for sure."
+    }
+   ]
+  },
+  "D3": {
+   "type": "rating",
+   "section": "D",
+   "text": "The width of the equivalence band should be considered as an input for probabilistic planning.",
+   "counts": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 9,
+    "5": 2,
+    "U": 4
+   },
+   "n_rated": 16,
+   "denominator": 16,
+   "agree_n": 11,
+   "disagree_n": 3,
+   "pct_agree": 0.6875,
+   "pct_neutral": 0.125,
+   "pct_disagree": 0.1875,
+   "median": 4.0,
+   "q1": 3.0,
+   "q3": 4.0,
+   "result": "No consensus",
+   "result_key": "none",
+   "summary": "Several respondents found the statement under-specified: one said no methodology or concept was given, one called it a different concept, and one would agree if “should” were changed to “can”. Others saw it as desirable but questioned when probabilistic planning will be available clinically, perhaps a decade away.",
+   "comments": [
+    {
+     "rating": "1",
+     "text": "This is a different concept"
+    },
+    {
+     "rating": "2",
+     "text": "If should--> can than agree"
+    },
+    {
+     "rating": "3",
+     "text": "Interesting idea, but there is no methodology or concept in this question, so I cannot really answer."
+    },
+    {
+     "rating": "4",
+     "text": "that would be nice"
+    },
+    {
+     "rating": "4",
+     "text": "probabilistic planning - when will this available in clinical practise... 10 years ahead?"
+    }
+   ]
+  },
+  "D4": {
+   "type": "rating",
+   "section": "D",
+   "text": "The equivalence range Is useful for educational purposes",
+   "counts": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 8,
+    "5": 12,
+    "U": 0
+   },
+   "n_rated": 20,
+   "denominator": 20,
+   "agree_n": 20,
+   "disagree_n": 0,
+   "pct_agree": 1.0,
+   "pct_neutral": 0.0,
+   "pct_disagree": 0.0,
+   "median": 5.0,
+   "q1": 4.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "",
+   "comments": []
+  },
+  "D5": {
+   "type": "rating",
+   "section": "D",
+   "text": "The equivalence range is useful for the evaluation and commissioning of AI segmentation models.",
+   "counts": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 6,
+    "5": 13,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 19,
+   "disagree_n": 0,
+   "pct_agree": 1.0,
+   "pct_neutral": 0.0,
+   "pct_disagree": 0.0,
+   "median": 5,
+   "q1": 4.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "The one comment asked whether relying on auto-contours that fall within a range could introduce a systematic error.",
+   "comments": [
+    {
+     "rating": "4",
+     "text": "will we introduce a systematic error when just relying on autocontouring if these contours fall within a bandwidth?"
+    }
+   ]
+  },
+  "D6": {
+   "type": "rating",
+   "section": "D",
+   "text": "The equivalence range is useful in the clinical evaluation of autosegmentations",
+   "counts": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 6,
+    "5": 13,
+    "U": 1
+   },
+   "n_rated": 19,
+   "denominator": 19,
+   "agree_n": 19,
+   "disagree_n": 0,
+   "pct_agree": 1.0,
+   "pct_neutral": 0.0,
+   "pct_disagree": 0.0,
+   "median": 5,
+   "q1": 4.0,
+   "q3": 5.0,
+   "result": "Consensus: agree",
+   "result_key": "agree",
+   "summary": "",
+   "comments": []
+  },
+  "N1": {
+   "type": "open",
+   "section": "E",
+   "text": "Suggest one tumour site, target type and treatment setting for initial evaluation. What should constrain the inner and outer boundaries in that setting?",
+   "summary": "Prostate was the most frequent suggestion (8 of 16), including prostate and seminal vesicles, prostate SBRT, prostate GTV for focal boost and prostate bed salvage: the anatomy is well defined and visible, numbers are large, outcome data exist and the prostate does not shrink during treatment, while the seminal vesicles are harder to see and would show wider ranges. Breast was next (3), particularly the whole-breast CTV after breast-conserving surgery. Other suggestions were gynaecological primary and nodal CTVs (radical EBRT, possibly brachytherapy), brain metastases for SRS, rectum (VMAT), oropharynx, palliative AP/PA treatments, and lung and head and neck as later sites; one had no preference but an interest in online adaptive radiotherapy. Proposed constraints were anatomical landmarks (pectoral fascia and skin for breast; rectal wall, bladder and rectum for prostate), imaging (MRI-defined prostate, contrast-enhanced T1 for brain metastases, PSMA PET-detected recurrence patterns), proximity of organs at risk, the dose gradient, direction-specific widths, and clinician-defined certainty (the inner boundary as what certainly belongs to the target, the outer as its furthest plausible extent).",
+   "unable": 4,
+   "no_response": 0,
+   "responses": [
+    "The easiest to validate is probably prostate as simple volume, large numbers and there will be clinical outcomes.",
+    "Breast, CTV, adjuvant radiotherapy after breast-conserving surgery. The inner and outer boundaries should be constrained by anatomical landmarks, including the pectoral fascia posteriorly and the skin surface anteriorly. Their range is also dose-gradient dependent.",
+    "Early stage breast or prostate, where the target is more anatomical that a subjective GTV",
+    "Prostate and SV is an obvious choice as it seems to be the most common evaluate site for new techniques. The prostate is well defined and easy to see, so if we cant get agreement there, then it would be hard to see how we would get agreement in other sites. The SVs are harder to see so should show more variation and wider ranges.",
+    "Gynae- CTVp/n (where clinical decisions are required to determine the clinical target volumes).\nRadical EBRT. Could also explore in brachytherapy.",
+    "Prostate gtv, for focal boost. All OAR and targetd where autoseg is in common use. \n\"Anatomical \" targets should be easy (prostate, rectum).",
+    "Gynaecological cancer\nPrimary CTV (uterus, cervix, GTV, vagina)\nClinician-defined delineation uncertainty - inner being the area of greater certainty that should belong to the structure and outer being the most outer plausible extent of the structure",
+    "I would suggest brain metastases for SRS treatment. the innder boundary should be contsrained by contrast-enhanced T1 signal, the outer boundary should take into account clinical protocol and proximity to OAR or other brain tumors.",
+    "No specific preference, but highly interested in application for OART",
+    "Palliative AP/PA-treatments: Boundaries can then be large in AP-direction, smaller in LR and smallest in IS.",
+    "For prostate cancer SBRT, the inner boundary of prostate CTV should be defined by the prostate volume as visualized on MRI; its outer boundary should be limited by the rectal wall posteriorly , whereas the anterior margin can be wider.",
+    "Prostate bed salvage; interobserver variability and PSMA PET/CT-detected local recurrences (https://doi.org/10.1016/j.ijrobp.2023.09.016)",
+    "rectum vmat",
+    "Oropharyngeal",
+    "Prostate EBRT as it is easily defined on imaging and does not 'shrink'/ respond to RT in a similar way to other sites e.g lung\nOuter: bladder ant and sup/ rectum post\nInner: unsure",
+    "Breast & prostate, followed by Lung, H&N"
+   ]
+  },
+  "N2": {
+   "type": "open",
+   "section": "E",
+   "text": "What information or evidence is needed before an outcome tolerance can be specified? If you suggest a number, give a rationale.",
+   "summary": "No respondent proposed a number. Evidence suggested before a tolerance can be set: the dosimetric impact of contour variation (with a site-specific tolerance); TCP/NTCP models, models of tumour spread and recurrence patterns, planning studies and knowledge of anatomical motion; a contouring consensus as a starting point, with the sensitivity of TCP to moving away from it; response-prediction modelling on large sets of similar tumours; OAR α/β ratios and treatment intent; and consensus on acceptable variation, for example a ΔNTCP threshold as used in the Dutch model-based approach. Respondents stressed that the tolerance should cover both target coverage and OAR dose, and that confirming no difference in outcome is hard while patients are treated on a single contour.",
+   "unable": 10,
+   "no_response": 1,
+   "responses": [
+    "The dosimetric impact of different contours is most realistic. The tolerance would be site specific.",
+    "confirmation that there would be no difference in clinical outcome- which is difficult to achieve as patients are currently treated on one binary set of contours",
+    "Reasonable tcp/ntcp models. Models on tumor spread and recurrence patterns, treatment planning study. Knowledge of anatomical motion.",
+    "When defining a clinically equivalent contour range for target volume, the tolerance should account for both target coverage and the associated OAR dose. Incorporating a wider range of plausible target contours may improve target robustness compared with planning using a single deterministic contour, but may also increase irradiation dose to OARs. The acceptable range should therefore be constrained by a predefined tolerance for NTCP.",
+    "I would run a response-prediction model with several hundred similar tumors for imaging-based outcome and test several optional RT plans",
+    "I think this will depend more on consensus (e.g., Delta-NTCP for model-based approach in The Netherlands)",
+    "The alpha/beta ratio of each OAR and intent of the treatment.",
+    "consensus on acceptable variation",
+    "Linking each target with a contouring consensus, and TCP model as a starting point. Then how sensitive it is to moving up/down that curve based on our consensus starting point."
+   ]
+  },
+  "T1": {
+   "type": "choice",
+   "section": "E",
+   "text": "Which name best describes the proposed framework?",
+   "summary": "Comments centred on whether “equivalent” overclaims: one respondent preferred a term implying “acceptable” rather than “equivalent”, while others endorsed both “acceptability range” and “clinically equivalent contour range”, or “acceptability range” and “clinical tolerance envelope”. Alternatives proposed were “clinical tolerance range”; “clinically equivalent range” or “clinically equivalent bandwidth” (suggested twice); “clinically equivalent contour variation” (emphasising the variation) or “outcome-equivalent contour range” (emphasising the outcome); an analogue of the CTV such as “equivalent clinical target bandwidth/envelope”; “clinical target range” or “gross target range”; and a name combining “clinical” and “evaluation”. One liked the word “envelope”, and one noted that the best name depends on the use (model training, contour evaluation or education).",
+   "counts": {
+    "Evaluation bandwidth": 0,
+    "Evaluation range": 2,
+    "Acceptability range": 5,
+    "Clinical tolerance envelope": 2,
+    "Clinically equivalent contour range": 10,
+    "Other": 0,
+    "U": 1
+   },
+   "no_response": 0,
+   "comments": [
+    {
+     "choice": "Evaluation range",
+     "text": "not sure we can say it is necessarily clinically equivalent, but may be clinically acceptable"
+    },
+    {
+     "choice": "Clinically equivalent contour range",
+     "text": "Or \"Clinically equivalent range\", or \"Clinically equivalent bandwidth\""
+    },
+    {
+     "choice": "Acceptability range",
+     "text": "Clinical tolerance range"
+    },
+    {
+     "choice": "Acceptability range",
+     "text": "i like acceptability range or clinically equivalent contour range"
+    },
+    {
+     "choice": "U",
+     "text": "Have been calling this a bandwith for too long ;)\n\nPerhaps we can think of an equivalent of ctv? Equivalent clinical target bandwith/envelop?"
+    },
+    {
+     "choice": "Clinically equivalent contour range",
+     "text": "This depends on whether we are using this for auto-contour training, contour evaluation or education.."
+    },
+    {
+     "choice": "Evaluation range",
+     "text": "I would suggest something that incorporates clinical and evaluation range"
+    },
+    {
+     "choice": "Clinically equivalent contour range",
+     "text": "This one made me smile :-)"
+    },
+    {
+     "choice": "Acceptability range",
+     "text": "Both Acceptability range and Clinical tolerance envelope sound equally great to me!"
+    },
+    {
+     "choice": "Clinically equivalent contour range",
+     "text": "or Clinical Target Range, Gross Target Range"
+    },
+    {
+     "choice": "Clinically equivalent contour range",
+     "text": "I like the word envelope\n\nOther options, that I prefer above the chosen one:\nClinically equivalent contour variation (emphasizes the variation)\nOutcome-equivalent contour range (emphasizes the clinical outcome)\n\n... or maybe another shuffle of words."
+    },
+    {
+     "choice": "Clinically equivalent contour range",
+     "text": "Or clinically equivalent bandwidth"
+    }
+   ]
+  },
+  "O1": {
+   "type": "open",
+   "section": "E",
+   "text": "Is an important statement or concern missing? Suggest one addition or change and briefly explain why it matters.",
+   "summary": "Suggested additions were: ranges that depend on modality, including proton and carbon-ion therapy; evaluating equivalence bands separately for clinically relevant subgroups rather than assuming one band suits all patients; the personalisation of radiotherapy, since population-based protocols are only a starting point and individual adjustment currently rests on physician intuition passed on informally; the influence of inverse dose optimisation on outcome (tumour control and toxicity); the methodological difficulty of assessing equivalence with TCP when steep dose gradients make “plan on contour A, evaluate on contour B” challenging; and the role of treatment intent, for example SBRT used for cytoreduction before surgery, where the inner boundary might follow the biological target volume rather than the GTV. One respondent thanked the team for the statements.",
+   "unable": 3,
+   "no_response": 8,
+   "responses": [
+    "Evaluation range needs to be modality dependent (also proton and carbon ion therapy specific)",
+    "I think we are missing a short disucssion on the importance of personalizing RT treatments, we know it is coming and it will inform both manual and auto-contouring. I think the present protocols that are population-based and statistical in nature are only good as a starting point and right now the personalization depends on physician intuition and is the \"gray zone\" that is taught by seniors to new-comers. I think this subject needs more attention and recognition.",
+    "I think it is already a very nice set of statements, thank you for this!",
+    "As mentioned before, I do not see how two target contours can be assessed by clinical equivalent impact. An acceptable plan has a \"good\" TCP for any target contour, so you cannot assess both on TCP. Doing a \"contour A, plan, evaluate on contour B\" approach can become challenging as TCP rapidly drops with sharp dosimetric gradients. This requires  a lot of research. Thankfully, automated treatment planning exist :)",
+    "The treatment intent is fundamental. For instance, SBRT can be utilized to cytoreduce a bulky, radioresistant mass prior to surgical resection; in this scenario, the inner boundary could be less strictly conformed to the GTV, aligning more closely with the biological target volume.",
+    "the influence of inverse dose optimization on clinical outcome (both target-related as well as toxicity-related) is insufficiently addressed in this discussion",
+    "Equivalence bands should be evaluated separately for clinically relevant subgroups, rather than assuming a single band is appropriate for all patients."
+   ]
+  }
+ }
+}

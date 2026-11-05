@@ -64,19 +64,22 @@
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
         <p class="text-xs font-semibold uppercase tracking-wider text-brand-teal">Delphi Round <span class="js-round">1</span></p>
         <h2 class="text-2xl sm:text-3xl font-bold text-brand-navy mt-1">Clinical equivalence of target contours</h2>
-        <p class="text-sm text-slate-500 mt-2"><span id="count-statements">–</span> statements and <span id="count-questions">–</span> short questions · Allow about 20 minutes</p>
+        <p class="text-sm text-slate-500 mt-2"><span id="count-statements">–</span> statements and <span id="count-questions">–</span> short questions · <span data-show-round="1">Allow about 20 minutes</span><span data-show-round="2" class="hidden">Allow about 15 minutes</span></p>
 
         <h3 class="text-sm font-bold text-slate-900 mt-6">About this survey</h3>
         <div class="text-sm text-slate-700 leading-relaxed space-y-3 mt-2">
-          <p>We are investigating how to distinguish acceptable variation in target contours from differences that require correction. The proposed evaluation bandwidth represents variation using inner and outer contours. This survey asks what that range should mean, how it could be constructed, and what evidence would support its use.</p>
-          <p>The statements are proposals to test, not established recommendations. Agreement and disagreement are equally useful. The focus is target volumes; organs at risk are considered through the effects of target contour changes on toxicity.</p>
-          <p>There are two planned rounds. Round 2 will provide anonymised group results for consideration as a group. You will then rate the statements again. Differences of opinion remaining after Round 2 will be reported.</p>
+          <p>We are investigating how to distinguish acceptable and expected variation in target contours from differences that require clinically relevant correction. The proposed evaluation bandwidth represents variation using inner and outer contours. However, how to interpret this is a topic prone to discussion. This survey asks how this range should be interpreted, how it could be constructed, and what evidence would support its use.</p>
+          <p>The statements are proposals to test, not established recommendations. Agreement and disagreement are equally useful. The focus is on autosegmentation of target volumes; organs at risk are considered indirectly through the effects of target contour changes.</p>
+          <p data-show-round="1">There are two planned rounds. Round 1 will provide each person a set of statements to rate, and comment, as appropriate.  Round 2 will provide anonymised group results for consideration as a group. You will then rate the statements again. Differences of opinion remaining after Round 2 will be reported.</p>
+          <p data-show-round="2" class="hidden">This is Round <span class="js-round">2</span>. Each statement is shown with the anonymised Round <span class="js-prev-round">1</span> results: how the panel rated it, a summary of the comments and the comments themselves. Please consider the group's views and rate each statement again; you may keep or change your previous rating. Statements that reached consensus in Round <span class="js-prev-round">1</span> are not rated again and are listed below. Differences of opinion remaining after this round will be reported.</p>
         </div>
 
         <h3 class="text-sm font-bold text-slate-900 mt-6">How to respond</h3>
         <ol class="text-sm text-slate-700 leading-relaxed list-decimal pl-5 space-y-1.5 mt-2">
           <li>Statements are shown one at a time, section by section.</li>
+          <li data-show-round="2" class="hidden">Read the Round <span class="js-prev-round">1</span> group result shown with each statement; open “Comments” to read what panel members wrote.</li>
           <li>Rate each statement independently, as written. If it depends on a particular site, target type or clinical setting, explain that in the comment box.</li>
+          <li data-show-round="2" class="hidden">Statements marked <strong>Revised in Round <span class="js-round">2</span></strong> are reworded in response to comments; rate them as new statements. The results shown with them are for the original wording.</li>
           <li>Choose <strong>U</strong> when you cannot judge a statement.</li>
           <li>Comments are optional and welcome: caveats, conditions, or other perspectives to consider.</li>
           <li>You can review and change any answer before submitting. Your answers are kept in this browser as you go, so you can close the page and return on the same device and browser.</li>
@@ -91,6 +94,9 @@
         <p class="text-xs text-slate-500 mt-2">A neutral view (3) and inability to judge (U) will be analysed separately.</p>
       </div>
 
+      <!-- Round 2 onwards: previous-round results and the statements not rated again (filled by app.js) -->
+      <div id="previous-round" class="hidden bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8"></div>
+
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
         <h3 class="text-lg font-bold text-brand-navy">About you</h3>
         <p class="text-xs text-slate-500 mt-1">Used to check the balance of the panel and to link your Round 1 and Round 2 responses. Other panel members will not see your identity.</p>
@@ -98,7 +104,7 @@
         <details class="mt-4 bg-slate-50 rounded-xl border border-slate-200">
           <summary class="px-4 py-3 text-sm font-semibold text-slate-700 cursor-pointer select-none">Privacy notice — how your data is used</summary>
           <div id="privacy-notice" class="px-4 pb-4 pt-1 text-xs text-slate-600 leading-relaxed space-y-2 border-t border-slate-200">
-            <p>[Replace this paragraph with your privacy notice: what is collected (name, email, profession, experience, country, ratings and comments), why, who can see it, how long it is kept, and who to contact to withdraw.]</p>
+            <p>Your name, email, profession, region, years of experience and reponses will be kept for the duration of this project, and may influence abstract and paper submission. Your data can be deleted at anytime on request. </p>
           </div>
         </details>
 
@@ -205,7 +211,8 @@
     <section id="stage-done" class="hidden space-y-5">
       <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 sm:p-8 no-print">
         <h2 class="text-xl font-bold text-emerald-900">Thank you — your Round <span class="js-round">1</span> responses have been submitted</h2>
-        <p class="text-sm text-emerald-900/80 mt-1">Keep a copy of your answers to compare with the group results in the next round.</p>
+        <p data-show-round="1" class="text-sm text-emerald-900/80 mt-1">Keep a copy of your answers to compare with the group results in the next round.</p>
+        <p data-show-round="2" class="hidden text-sm text-emerald-900/80 mt-1">Thank you for taking part. The final results will be shared with the panel.</p>
         <div class="flex flex-wrap gap-3 mt-4">
           <button id="btn-print" type="button" class="px-5 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-teal text-white text-sm font-semibold">Print or save as PDF</button>
           <button id="btn-clear" type="button" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-700 text-xs font-semibold">Remove my copy from this browser</button>
@@ -222,6 +229,6 @@
     </section>
   </main>
 
-  <script src="./app.js?v=2026-10-29"></script>
+  <script src="./app.js?v=2026-11-04"></script>
 </body>
 </html>
