@@ -11,7 +11,7 @@ const CONFIG = {
   ROUND: 2,
   // Change whenever you edit the statements CSV, so each response records
   // which wording was answered.
-  INSTRUMENT_VERSION: '2026-11-02',
+  INSTRUMENT_VERSION: '2026-11-05',
   CSV_PATH: './delphi_statements.csv',
 
   // Round 2 onwards: the previous round's group results, written by
