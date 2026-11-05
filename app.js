@@ -8,7 +8,7 @@
 // ============================================================================
 const CONFIG = {
   // Change for Round 2. Responses from each round are stored separately.
-  ROUND: 1,
+  ROUND: 2,
   // Change whenever you edit the statements CSV, so each response records
   // which wording was answered.
   INSTRUMENT_VERSION: '2026-11-02',
