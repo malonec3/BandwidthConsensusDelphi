@@ -3,7 +3,7 @@
  "generated": "2026-11-05",
  "respondents": 20,
  "threshold": 0.75,
- "rule": "Consensus means at least 75% rated the statement 4–5 (agree) or 1–2 (disagree). U responses are not counted. Neutral (3) ratings are counted.",
+ "rule": "Consensus means at least 75% rated the statement 4–5 (agree) or 1–2 (disagree), with less than 10% on the opposite side. U responses are not counted. Neutral (3) ratings are counted.",
  "items": {
   "A1": {
    "type": "rating",
@@ -27,8 +27,8 @@
    "median": 4,
    "q1": 4.0,
    "q3": 5.0,
-   "result": "Consensus: agree",
-   "result_key": "agree",
+   "result": "No consensus",
+   "result_key": "none",
    "summary": "Most commenters accepted that preference plays a part but questioned the framing. Several said a clinician's preferences are shaped by clinical experience and intuition and are themselves aimed at clinical benefit, so the two are hard to separate; one described the process as inherently subjective, and one observed that their own contouring changes depending on which clinician will approve it. Another noted that clinicians must follow guidelines but also weigh patient-specific factors, imaging interpretation and unknown microscopic extent, which others may read as preference. On wording, one suggested “opinions” rather than “preferences”, and two felt “sometimes” makes the statement vague (one suggesting that personal preference always plays a role).",
    "comments": [
     {
@@ -435,8 +435,8 @@
    "median": 4.0,
    "q1": 4.0,
    "q3": 5.0,
-   "result": "Consensus: agree",
-   "result_key": "agree",
+   "result": "No consensus",
+   "result_key": "none",
    "summary": "In support: plan quality and modality (for example IMPT versus VMAT) change the dose gradient and so how much contour variation can be tolerated; palliative treatments could be more lenient than SRS; and IGRT, SGRT and immobilisation also matter. Cautions: technique and dose prescription are often centre-specific, and multicentre planning studies show that desired dose distributions can differ widely even with the same intent and modality.",
    "comments": [
     {
@@ -1155,8 +1155,8 @@
    "median": 4.0,
    "q1": 4.0,
    "q3": 4.75,
-   "result": "Consensus: agree",
-   "result_key": "agree",
+   "result": "No consensus",
+   "result_key": "none",
    "summary": "One respondent was unsure whether this meant validation for each patient (impractical clinically) or at commissioning (agreeable), which suggests the statement needs clarifying. One disagreed only with assessing all plans against the same independently specified evaluation target; one noted that the approach is biased towards the planning process and planning expertise; and one felt it is only possible with automated planning that applies the same priorities to target and organs at risk.",
    "comments": [
     {
@@ -1435,8 +1435,8 @@
    "median": 4.0,
    "q1": 4.0,
    "q3": 5.0,
-   "result": "Consensus: agree",
-   "result_key": "agree",
+   "result": "No consensus",
+   "result_key": "none",
    "summary": "Caveats: patient conditions or other factors may still justify editing within the validated range, and further editing may be warranted where an adjacent organ at risk inside the inner border needs sparing. One respondent suggested stronger wording, that such editing should be actively prevented.",
    "comments": [
     {

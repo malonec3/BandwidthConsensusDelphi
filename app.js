@@ -8,10 +8,10 @@
 // ============================================================================
 const CONFIG = {
   // Change for Round 2. Responses from each round are stored separately.
-  ROUND: 2,
+  ROUND: 1,
   // Change whenever you edit the statements CSV, so each response records
   // which wording was answered.
-  INSTRUMENT_VERSION: '2026-11-05',
+  INSTRUMENT_VERSION: '2026-11-02',
   CSV_PATH: './delphi_statements.csv',
 
   // Round 2 onwards: the previous round's group results, written by
@@ -306,9 +306,7 @@ function resultSentence(fb) {
   if (fb.result_key === 'agree') detail = `${pctText(fb.pct_agree)} rated 4–5 (${fb.agree_n} of ${d})`;
   else if (fb.result_key === 'disagree') detail = `${pctText(fb.pct_disagree)} rated 1–2 (${fb.disagree_n} of ${d})`;
   else if (fb.result_key === 'none') detail = `${pctText(fb.pct_agree)} agree, ${pctText(fb.pct_disagree)} disagree (n = ${d})`;
-  return `<span class="font-bold">${escapeHTML(fb.result)}</span>${detail ? ` · ${escapeHTML(detail)}` : ''}${
-    fb.borderline ? ' <span class="text-slate-500 italic">· one vote from changing</span>' : ''
-  }`;
+  return `<span class="font-bold">${escapeHTML(fb.result)}</span>${detail ? ` · ${escapeHTML(detail)}` : ''}`;
 }
 
 function ratingChartHTML(fb) {
@@ -423,9 +421,11 @@ function renderPreviousRound() {
   box.innerHTML = `
     <h3 class="text-lg font-bold text-brand-navy">Round ${prev} results</h3>
     <p class="text-sm text-slate-700 mt-2 leading-relaxed">${escapeHTML(previous.respondents)} panel members responded to Round ${prev}. Consensus was reached on ${nCons} of ${rated.length} statements. ${escapeHTML(previous.rule || '')}</p>
-    <p class="text-sm text-slate-700 mt-2 leading-relaxed">In this round you will rate ${items.filter((i) => i.type === 'rating' && !i.revisedFrom).length} statements again${
-      items.some((i) => i.revisedFrom) ? ` and ${items.filter((i) => i.revisedFrom).length} revised ${items.filter((i) => i.revisedFrom).length === 1 ? 'statement' : 'statements'}` : ''
-    }, each shown with the Round ${prev} results and comments.${
+    <p class="text-sm text-slate-700 mt-2 leading-relaxed">In this round you will rate ${accepted.length ? '' : 'all '}${items.filter((i) => i.type === 'rating' && !i.revisedFrom).length} statements again${
+      accepted.length ? '' : ', including those that reached consensus'
+    }${
+      items.some((i) => i.revisedFrom) ? `, plus ${items.filter((i) => i.revisedFrom).length} revised ${items.filter((i) => i.revisedFrom).length === 1 ? 'statement' : 'statements'}` : ''
+    }. Each is shown with the Round ${prev} results and comments.${
       accepted.length ? ` The ${accepted.length} statements below reached consensus and are not being rated again.` : ''
     }${CONFIG.REPORT_URL ? ` <a class="font-semibold text-brand-teal underline" href="${escapeHTML(CONFIG.REPORT_URL)}" target="_blank" rel="noopener">Read the full Round ${prev} report</a>.` : ''}</p>
     ${accepted.length ? `
