@@ -11,7 +11,7 @@ const CONFIG = {
   ROUND: 1,
   // Change whenever you edit the statements CSV, so each response records
   // which wording was answered.
-  INSTRUMENT_VERSION: '2026-11-02',
+  INSTRUMENT_VERSION: '2026-10-29',
   CSV_PATH: './delphi_statements.csv',
 
   // From Supabase > Project Settings > API (the publishable / anon key).
@@ -23,8 +23,7 @@ const CONFIG = {
   REQUIRE_RATING: true,
   COMMENT_MAX_LENGTH: 3000
 };
-// Keep drafts separate when wording or question IDs change within a round.
-const STORAGE_KEY = `delphi_contours_round${CONFIG.ROUND}_${CONFIG.INSTRUMENT_VERSION}`;
+const STORAGE_KEY = `delphi_contours_round${CONFIG.ROUND}_v1`;
 
 const SCALE = [
   { value: '1', label: 'Strongly disagree' },
@@ -188,10 +187,6 @@ function showError(msg) {
 const resp = (id) => state.responses[id] || {};
 const sectionOf = (item) => sections.find((s) => s.id === item.section);
 
-function isOtherChoice(value) {
-  return String(value ?? '').trim().toLowerCase() === 'other';
-}
-
 function isAnswered(item) {
   const r = resp(item.id);
   if (item.type === 'rating') return Boolean(r.rating);
@@ -230,7 +225,7 @@ function answerSummary(item) {
   if (item.type === 'choice') {
     if (!r.choice) return '';
     if (r.choice === 'U') return 'Unable to answer';
-    if (isOtherChoice(r.choice)) return `Other: ${(r.other || '').trim() || '(not specified)'}`;
+    if (r.choice === 'Other') return `Other: ${(r.other || '').trim() || '(not specified)'}`;
     return r.choice;
   }
   return '';
@@ -338,20 +333,15 @@ function renderItem() {
         Unable to answer because of insufficient information or expertise
       </label>`;
   } else if (item.type === 'choice') {
-    const opts = item.options.map((o) => ({
-      value: o,
-      label: o === 'U' ? 'Unable to answer' : o
-    }));
-    if (!opts.some((o) => o.value === 'U')) {
-      opts.push({ value: 'U', label: 'Unable to answer' });
-    }
+    const opts = item.options.map((o) => ({ value: o, label: o }));
+    opts.push({ value: 'U', label: 'Unable to answer' });
     body += `
       <fieldset class="mt-6">
         <legend class="text-sm font-semibold text-slate-800 mb-2">Choose one</legend>
         <div class="space-y-2" role="radiogroup">
           ${opts.map((o) => choiceButton(o, r.choice === o.value)).join('')}
         </div>
-        <div id="other-wrap" class="${isOtherChoice(r.choice) ? '' : 'hidden'} mt-3">
+        <div id="other-wrap" class="${r.choice === 'Other' ? '' : 'hidden'} mt-3">
           <label class="block text-sm font-medium text-slate-700 mb-1" for="other-input">Your suggested name</label>
           <input id="other-input" type="text" maxlength="200" value="${escapeHTML(r.other || '')}" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal" />
         </div>
@@ -375,7 +365,7 @@ function renderItem() {
       updateResponse(item.id, { choice: btn.dataset.choice });
       saveState();
       refreshButtons(card, 'choice', btn.dataset.choice);
-      card.querySelector('#other-wrap').classList.toggle('hidden', !isOtherChoice(btn.dataset.choice));
+      card.querySelector('#other-wrap').classList.toggle('hidden', btn.dataset.choice !== 'Other');
       updateProgressOnly();
     })
   );
@@ -573,7 +563,7 @@ function buildRow(event) {
       rating: it.type === 'rating' ? r.rating || null : null,
       text: it.type === 'open' ? (r.text || '').trim() || null : null,
       choice: it.type === 'choice' ? r.choice || null : null,
-      other: it.type === 'choice' && isOtherChoice(r.choice) ? (r.other || '').trim() || null : null,
+      other: it.type === 'choice' && r.choice === 'Other' ? (r.other || '').trim() || null : null,
       unable: it.type === 'open' ? Boolean(r.unable) : it.type === 'rating' ? r.rating === 'U' : r.choice === 'U',
       comment: (r.comment || '').trim() || null,
       first_answered_at: state.times[it.id]?.first || null,
